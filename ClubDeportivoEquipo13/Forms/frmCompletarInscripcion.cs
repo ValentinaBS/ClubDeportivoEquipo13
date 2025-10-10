@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -91,6 +92,25 @@ namespace ClubDeportivoEquipo13.Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide(); // Cierra el formulario sin crear instancias duplicadas
+        }
+
+        private void rdoSocio_CheckedChanged(object sender, EventArgs e)
+        {
+            // Muestra el selector de fecha
+            lblFecha.Visible = true;
+            dtpFecha.Visible = true;
+        }
+
+        private void cboFormaPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoNoSocio_CheckedChanged(object sender, EventArgs e)
+        {
+            // Esconde el selector de fecha
+            lblFecha.Visible = false;
+            dtpFecha.Visible = false;
         }
     }
 }

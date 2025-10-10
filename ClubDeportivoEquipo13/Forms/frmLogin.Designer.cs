@@ -50,6 +50,7 @@ namespace ClubDeportivoEquipo13.Forms
             // 
             this.txtPass.Location = new System.Drawing.Point(50, 110);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(250, 20);
             this.txtPass.TabIndex = 2;
             this.txtPass.Text = "CONTRASEÑA";

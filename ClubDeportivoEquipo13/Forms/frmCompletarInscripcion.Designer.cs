@@ -44,6 +44,7 @@
             this.rdoSocio.Size = new System.Drawing.Size(104, 24);
             this.rdoSocio.TabIndex = 0;
             this.rdoSocio.Text = "Socio";
+            this.rdoSocio.CheckedChanged += new System.EventHandler(this.rdoSocio_CheckedChanged);
             // 
             // rdoNoSocio
             // 
@@ -52,6 +53,7 @@
             this.rdoNoSocio.Size = new System.Drawing.Size(104, 24);
             this.rdoNoSocio.TabIndex = 1;
             this.rdoNoSocio.Text = "No Socio";
+            this.rdoNoSocio.CheckedChanged += new System.EventHandler(this.rdoNoSocio_CheckedChanged);
             // 
             // dtpFecha
             // 
@@ -59,6 +61,7 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(200, 20);
             this.dtpFecha.TabIndex = 2;
+            this.dtpFecha.Visible = false;
             // 
             // txtMonto
             // 
@@ -73,6 +76,7 @@
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(100, 21);
             this.cboFormaPago.TabIndex = 5;
+            this.cboFormaPago.SelectedIndexChanged += new System.EventHandler(this.cboFormaPago_SelectedIndexChanged);
             // 
             // btnRegistrar
             // 
@@ -107,6 +111,7 @@
             this.lblFecha.Size = new System.Drawing.Size(150, 20);
             this.lblFecha.TabIndex = 9;
             this.lblFecha.Text = "Fecha de inscripción:";
+            this.lblFecha.Visible = false;
             // 
             // lblMonto
             // 
