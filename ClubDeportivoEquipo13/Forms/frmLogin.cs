@@ -37,5 +37,32 @@ namespace ClubDeportivoEquipo13.Forms
                 MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtUsuario_Leave(object sender, EventArgs e)
+        {
+            // se ejecuta cuando se va el foco
+            if (txtUsuario.Text == "")
+            {
+                txtUsuario.Text = "USUARIO";
+            }
+        }
+
+        private void txtPass_Enter(object sender, EventArgs e)
+        {
+            if (txtPass.Text == "CONTRASEÑA")
+            {
+                txtPass.Text = "";
+                txtPass.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txtPass_Leave(object sender, EventArgs e)
+        {
+            if (txtPass.Text == "")
+            {
+                txtPass.UseSystemPasswordChar = false;
+                txtPass.Text = "CONTRASEÑA";
+            }
+        }
     }
 }

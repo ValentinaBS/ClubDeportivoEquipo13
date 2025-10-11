@@ -51,6 +51,12 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.lblAsterisco1 = new System.Windows.Forms.Label();
+            this.lblAsterisco2 = new System.Windows.Forms.Label();
+            this.lblAsterisco = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblAsterisco3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -178,9 +184,75 @@
             this.btnVolver.Text = "Volver";
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // lblAsterisco1
+            // 
+            this.lblAsterisco1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsterisco1.ForeColor = System.Drawing.Color.Red;
+            this.lblAsterisco1.Location = new System.Drawing.Point(326, 55);
+            this.lblAsterisco1.Name = "lblAsterisco1";
+            this.lblAsterisco1.Size = new System.Drawing.Size(100, 23);
+            this.lblAsterisco1.TabIndex = 16;
+            this.lblAsterisco1.Text = "*";
+            this.lblAsterisco1.Click += new System.EventHandler(this.lblAsterisco1_Click);
+            // 
+            // lblAsterisco2
+            // 
+            this.lblAsterisco2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsterisco2.ForeColor = System.Drawing.Color.Red;
+            this.lblAsterisco2.Location = new System.Drawing.Point(326, 81);
+            this.lblAsterisco2.Name = "lblAsterisco2";
+            this.lblAsterisco2.Size = new System.Drawing.Size(100, 23);
+            this.lblAsterisco2.TabIndex = 17;
+            this.lblAsterisco2.Text = "*";
+            // 
+            // lblAsterisco
+            // 
+            this.lblAsterisco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsterisco.ForeColor = System.Drawing.Color.Red;
+            this.lblAsterisco.Location = new System.Drawing.Point(198, 231);
+            this.lblAsterisco.Name = "lblAsterisco";
+            this.lblAsterisco.Size = new System.Drawing.Size(100, 23);
+            this.lblAsterisco.TabIndex = 19;
+            this.lblAsterisco.Text = "*";
+            this.lblAsterisco.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(326, 170);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 23);
+            this.label4.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(326, 197);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 23);
+            this.label5.TabIndex = 21;
+            // 
+            // lblAsterisco3
+            // 
+            this.lblAsterisco3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsterisco3.ForeColor = System.Drawing.Color.Red;
+            this.lblAsterisco3.Location = new System.Drawing.Point(326, 110);
+            this.lblAsterisco3.Name = "lblAsterisco3";
+            this.lblAsterisco3.Size = new System.Drawing.Size(100, 23);
+            this.lblAsterisco3.TabIndex = 18;
+            this.lblAsterisco3.Text = "*";
+            // 
             // frmInscripcion
             // 
             this.ClientSize = new System.Drawing.Size(350, 320);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblAsterisco);
+            this.Controls.Add(this.lblAsterisco3);
+            this.Controls.Add(this.lblAsterisco2);
+            this.Controls.Add(this.lblAsterisco1);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblDocumento);
@@ -203,5 +275,12 @@
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.Label lblAsterisco1;
+        private System.Windows.Forms.Label lblAsterisco2;
+        private System.Windows.Forms.Label lblAsterisco;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblAsterisco3;
     }
 }

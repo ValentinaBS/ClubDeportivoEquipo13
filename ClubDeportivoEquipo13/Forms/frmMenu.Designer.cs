@@ -29,32 +29,43 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Location = new System.Drawing.Point(20, 20);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(46, 17);
+            this.lblUsuario.Size = new System.Drawing.Size(46, 13);
+            this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario:";
             // 
             // btnInscribir
             // 
             this.btnInscribir.Location = new System.Drawing.Point(30, 60);
+            this.btnInscribir.Name = "btnInscribir";
             this.btnInscribir.Size = new System.Drawing.Size(200, 40);
+            this.btnInscribir.TabIndex = 1;
             this.btnInscribir.Text = "Inscribir Persona";
             this.btnInscribir.Click += new System.EventHandler(this.btnInscribir_Click);
             // 
             // btnPagar
             // 
             this.btnPagar.Location = new System.Drawing.Point(30, 110);
+            this.btnPagar.Name = "btnPagar";
             this.btnPagar.Size = new System.Drawing.Size(200, 40);
+            this.btnPagar.TabIndex = 2;
             this.btnPagar.Text = "Pagar Cuota";
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // btnVencimientos
             // 
             this.btnVencimientos.Location = new System.Drawing.Point(30, 160);
+            this.btnVencimientos.Name = "btnVencimientos";
             this.btnVencimientos.Size = new System.Drawing.Size(200, 40);
+            this.btnVencimientos.TabIndex = 3;
             this.btnVencimientos.Text = "Listar Vencimientos";
+            this.btnVencimientos.Click += new System.EventHandler(this.btnVencimientos_Click);
             // 
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(30, 210);
+            this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(200, 40);
+            this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -71,6 +82,7 @@
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }

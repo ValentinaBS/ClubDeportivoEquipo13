@@ -30,12 +30,23 @@ namespace ClubDeportivoEquipo13.Forms
         {
             frmInscripcion inscripcion = new frmInscripcion();
             inscripcion.Show();
-            this.Hide();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            frmPagarCuota pagarCuota = new frmPagarCuota();
+            pagarCuota.Show();
+        }
+
+        private void btnVencimientos_Click(object sender, EventArgs e)
+        {
+            frmVencimientos vencimientos = new frmVencimientos();
+            vencimientos.Show();
         }
     }
 }

@@ -45,15 +45,17 @@ namespace ClubDeportivoEquipo13.Forms
             this.txtUsuario.Size = new System.Drawing.Size(250, 20);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Text = "USUARIO";
+            this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(50, 110);
             this.txtPass.Name = "txtPass";
-            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(250, 20);
             this.txtPass.TabIndex = 2;
             this.txtPass.Text = "CONTRASEÑA";
+            this.txtPass.Enter += new System.EventHandler(this.txtPass_Enter);
+            this.txtPass.Leave += new System.EventHandler(this.txtPass_Leave);
             // 
             // btnIngresar
             // 

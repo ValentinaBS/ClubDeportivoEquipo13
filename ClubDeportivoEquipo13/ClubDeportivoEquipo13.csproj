@@ -129,6 +129,18 @@
     <Compile Include="Forms\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPagarCuota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPagarCuota.Designer.cs">
+      <DependentUpon>frmPagarCuota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmVencimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmVencimientos.Designer.cs">
+      <DependentUpon>frmVencimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmCompletarInscripcion.resx">
@@ -142,6 +154,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPagarCuota.resx">
+      <DependentUpon>frmPagarCuota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmVencimientos.resx">
+      <DependentUpon>frmVencimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

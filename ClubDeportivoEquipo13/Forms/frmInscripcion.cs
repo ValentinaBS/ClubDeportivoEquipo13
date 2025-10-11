@@ -24,7 +24,8 @@ namespace ClubDeportivoEquipo13.Forms
             // Validar campos obligatorios
             if (string.IsNullOrEmpty(txtNombre.Text) ||
                 string.IsNullOrEmpty(txtApellido.Text) ||
-                string.IsNullOrEmpty(txtDocumento.Text))
+                string.IsNullOrEmpty(txtDocumento.Text) ||
+                chkFicha.Checked == false)
             {
                 MessageBox.Show("Debe completar los campos obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -71,6 +72,16 @@ namespace ClubDeportivoEquipo13.Forms
             txtEmail.Clear();
             chkFicha.Checked = false;
             txtNombre.Focus();
+        }
+
+        private void lblAsterisco1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
