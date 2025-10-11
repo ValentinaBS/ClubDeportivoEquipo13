@@ -24,12 +24,14 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void rdoMensual_CheckedChanged(object sender, EventArgs e)
         {
-
+            lblFechaDePago.Visible = true;
+            dtpFecha.Visible = true;
         }
 
         private void rdoDiaria_CheckedChanged(object sender, EventArgs e)
         {
-
+            lblFechaDePago.Visible = false;
+            dtpFecha.Visible = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
