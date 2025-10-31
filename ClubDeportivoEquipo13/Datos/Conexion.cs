@@ -19,9 +19,8 @@ namespace ClubDeportivoEquipo13.Datos
                     "Server=localhost;" +
                     "Database=equipo13_coma;" +
                     "User Id=root;" +
-                    "Password=root;" +
-                    "Port=3306;" +
-                    "SslMode=none;";
+                    "Password=Sebas2405;" +
+                    "Port=3306;";
 
                 return cadena;
             }

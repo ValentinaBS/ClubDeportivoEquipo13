@@ -72,6 +72,10 @@
             // 
             // cboFormaPago
             // 
+            this.cboFormaPago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Debito",
+            "Tarjeta"});
             this.cboFormaPago.Location = new System.Drawing.Point(150, 150);
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(100, 21);

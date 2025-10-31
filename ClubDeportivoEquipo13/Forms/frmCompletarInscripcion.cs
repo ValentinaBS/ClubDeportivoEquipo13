@@ -24,6 +24,7 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            DateTime vencimientoCalc = dtpFecha.Value.Date.AddDays(30);
             if (!rdoSocio.Checked && !rdoNoSocio.Checked)
             {
                 MessageBox.Show("Debe seleccionar tipo de inscripción.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -35,23 +36,25 @@ namespace ClubDeportivoEquipo13.Forms
 
             try
             {
+                int idGenerado = 0;
                 if (rdoSocio.Checked)
                 {
                     // Crear objeto Socio con la primera cuota mensual
                     Socio socio = new Socio
                     {
                         IdPersona = IdPersona,
-                        FechaVencimiento = dtpFecha.Value,
+                        FechaVencimiento = vencimientoCalc,
                         Cuota = new CuotaMensual
                         {
                             Monto = Convert.ToDouble(txtMonto.Text),
                             FechaPago = DateTime.Now,
-                            FechaVencimiento = dtpFecha.Value,
+                            FechaVencimiento = vencimientoCalc,
                             FormaPago = cboFormaPago.Text
                         }
                     };
 
                     respuesta = datos.NuevoSocio(socio);
+                    idGenerado = Convert.ToInt32(respuesta);
                 }
                 else if (rdoNoSocio.Checked)
                 {
@@ -68,20 +71,34 @@ namespace ClubDeportivoEquipo13.Forms
                     };
 
                     respuesta = datos.NuevoNoSocio(noSocio);
+                    idGenerado = Convert.ToInt32(respuesta);
                 }
-
-                // Validar respuesta
-                if (int.TryParse(respuesta, out int codigo))
+                //validacion del ID generado
+                if (idGenerado <= 0)
                 {
-                    if (codigo == 1)
-                        MessageBox.Show("La persona ya está registrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                        MessageBox.Show("Registro exitoso con código: " + respuesta, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Error al registrar la inscripción: " + respuesta, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Error: " + respuesta, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Inscripción registrada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
+                //si es socio, mostrar el carnet
+                if (rdoSocio.Checked)
+                {
+                    PersonasDatos pd = new PersonasDatos();
+                    DataTable personaDatos = pd.BuscarPersonaPorId(IdPersona);
+
+                    string nombre = personaDatos.Rows[0]["nombre"].ToString();
+                    string apellido = personaDatos.Rows[0]["apellido"].ToString();
+                    string dni = personaDatos.Rows[0]["dni"].ToString();
+                    string vencimiento = vencimientoCalc.ToShortDateString();
+
+                    frmCarnetSocio carnet = new frmCarnetSocio(nombre, apellido, dni, idGenerado.ToString(), vencimiento);
+                    carnet.ShowDialog();
+                }
+                this.Close();
             }
             catch (Exception ex)
             {
