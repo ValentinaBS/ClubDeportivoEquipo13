@@ -117,6 +117,12 @@
     <Compile Include="Forms\frmCompletarInscripcion.Designer.cs">
       <DependentUpon>frmCompletarInscripcion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmComprobantePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmComprobantePago.Designer.cs">
+      <DependentUpon>frmComprobantePago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmInscripcion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCompletarInscripcion.resx">
       <DependentUpon>frmCompletarInscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmComprobantePago.resx">
+      <DependentUpon>frmComprobantePago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInscripcion.resx">
       <DependentUpon>frmInscripcion.cs</DependentUpon>
