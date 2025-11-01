@@ -110,6 +110,7 @@
             this.btnAceptar.TabIndex = 12;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // frmVencimientos
             // 
@@ -123,7 +124,7 @@
             this.Controls.Add(this.lblFechaDePago);
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmVencimientos";
-            this.Text = "FrmVencimientos";
+            this.Text = "Control de Vencimientos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -14,8 +14,6 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            frmMenu menu = new frmMenu();
-            menu.Show();
             this.Hide();
         }
 

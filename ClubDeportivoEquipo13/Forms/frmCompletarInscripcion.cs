@@ -20,6 +20,25 @@ namespace ClubDeportivoEquipo13.Forms
         public frmCompletarInscripcion()
         {
             InitializeComponent();
+            // Carga los enums
+            InitializeComboBox();
+        }
+
+        private void InitializeComboBox()
+        {
+            var values = Enum.GetValues(typeof(Datos.TiposDePago)).Cast<Datos.TiposDePago>();
+
+            foreach (var value in values)
+            {
+                cboFormaPago.Items.Add(GetEnumDescription(value));
+            }
+        }
+
+        private string GetEnumDescription(Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attr = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+            return attr?.Description ?? value.ToString();
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -41,7 +60,8 @@ namespace ClubDeportivoEquipo13.Forms
                     Socio socio = new Socio
                     {
                         IdPersona = IdPersona,
-                        FechaVencimiento = dtpFecha.Value,
+                        // le agrega 1 mes a la fecha de pago, indicando el vencimiento
+                        FechaVencimiento = dtpFecha.Value.AddMonths(1),
                         Cuota = new CuotaMensual
                         {
                             Monto = Convert.ToDouble(txtMonto.Text),
@@ -87,10 +107,15 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 MessageBox.Show("Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            this.Hide();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            // Borra la persona creada en la base de datos
+            
+
+            
             this.Hide(); // Cierra el formulario sin crear instancias duplicadas
         }
 

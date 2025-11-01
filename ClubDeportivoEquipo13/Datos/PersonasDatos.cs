@@ -49,6 +49,7 @@ namespace ClubDeportivoEquipo13.Datos
             return idPersona;
         }
 
+
         public string NuevoSocio(Socio socio)
         {
             string salida;
