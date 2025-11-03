@@ -16,5 +16,10 @@ namespace ClubDeportivoEquipo13.Forms
         {
             InitializeComponent();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

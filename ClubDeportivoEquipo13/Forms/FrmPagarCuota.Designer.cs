@@ -38,11 +38,10 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.lblMonto = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.rdoEfectivo = new System.Windows.Forms.RadioButton();
             this.lblFormaDePago = new System.Windows.Forms.Label();
             this.btnRegistrarPago = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cboFormaPago = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblPagarCuota
@@ -135,32 +134,8 @@
             // 
             this.txtMonto.Location = new System.Drawing.Point(103, 157);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(91, 20);
+            this.txtMonto.Size = new System.Drawing.Size(121, 20);
             this.txtMonto.TabIndex = 9;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(209, 195);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 17);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Tarjeta";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // rdoEfectivo
-            // 
-            this.rdoEfectivo.AutoSize = true;
-            this.rdoEfectivo.Location = new System.Drawing.Point(129, 195);
-            this.rdoEfectivo.Name = "rdoEfectivo";
-            this.rdoEfectivo.Size = new System.Drawing.Size(64, 17);
-            this.rdoEfectivo.TabIndex = 11;
-            this.rdoEfectivo.TabStop = true;
-            this.rdoEfectivo.Text = "Efectivo";
-            this.rdoEfectivo.UseVisualStyleBackColor = true;
-            this.rdoEfectivo.CheckedChanged += new System.EventHandler(this.rdoEfectivo_CheckedChanged);
             // 
             // lblFormaDePago
             // 
@@ -173,7 +148,7 @@
             // 
             // btnRegistrarPago
             // 
-            this.btnRegistrarPago.Location = new System.Drawing.Point(40, 234);
+            this.btnRegistrarPago.Location = new System.Drawing.Point(177, 234);
             this.btnRegistrarPago.Name = "btnRegistrarPago";
             this.btnRegistrarPago.Size = new System.Drawing.Size(106, 43);
             this.btnRegistrarPago.TabIndex = 13;
@@ -182,7 +157,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(173, 234);
+            this.btnCancelar.Location = new System.Drawing.Point(37, 234);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(106, 43);
             this.btnCancelar.TabIndex = 14;
@@ -190,15 +165,24 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cboFormaPago
+            // 
+            this.cboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFormaPago.FormattingEnabled = true;
+            this.cboFormaPago.Location = new System.Drawing.Point(103, 194);
+            this.cboFormaPago.Name = "cboFormaPago";
+            this.cboFormaPago.Size = new System.Drawing.Size(121, 21);
+            this.cboFormaPago.TabIndex = 15;
+            this.cboFormaPago.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // frmPagarCuota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 297);
+            this.Controls.Add(this.cboFormaPago);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnRegistrarPago);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.rdoEfectivo);
             this.Controls.Add(this.lblFormaDePago);
             this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.lblMonto);
@@ -211,7 +195,7 @@
             this.Controls.Add(this.lblPersona);
             this.Controls.Add(this.lblPagarCuota);
             this.Name = "frmPagarCuota";
-            this.Text = "FrmPagarCuota";
+            this.Text = "Pagar Cuota";
             this.Load += new System.EventHandler(this.FrmPagarCuota_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -230,10 +214,9 @@
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label lblMonto;
         private System.Windows.Forms.TextBox txtMonto;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton rdoEfectivo;
         private System.Windows.Forms.Label lblFormaDePago;
         private System.Windows.Forms.Button btnRegistrarPago;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cboFormaPago;
     }
 }
