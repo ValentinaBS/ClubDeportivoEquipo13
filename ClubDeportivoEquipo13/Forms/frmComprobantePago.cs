@@ -36,8 +36,6 @@ namespace ClubDeportivoEquipo13.Forms
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Comprobante Impreso", "Imprimir", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmMenu menu = new frmMenu();
-            menu.Show();
             this.Close();
 
         }

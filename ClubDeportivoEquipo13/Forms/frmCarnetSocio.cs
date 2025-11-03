@@ -26,9 +26,6 @@ namespace ClubDeportivoEquipo13.Forms
             MessageBox.Show("Carnet Impreso", "Imprimir Carnet", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Cerrar el formulario después de imprimir
-            frmMenu menu = new frmMenu();
-            menu.Show();
-
             this.Close();
         }
     }

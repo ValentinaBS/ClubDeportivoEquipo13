@@ -103,19 +103,53 @@ namespace ClubDeportivoEquipo13.Forms
                     MessageBox.Show("Inscripción registrada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-                //si es socio, mostrar el carnet
-                if (rdoSocio.Checked)
+                // Mostrar comprobante o carnet según corresponda
+                PersonasDatos pd = new PersonasDatos();
+                DataTable personaDatos = pd.BuscarPersonaPorId(IdPersona);
+
+                //datos para el comprobante o carnet
+                string nombre = personaDatos.Rows[0]["nombre"].ToString();
+                string apellido = personaDatos.Rows[0]["apellido"].ToString();
+                string dni = personaDatos.Rows[0]["dni"].ToString();
+                string monto = txtMonto.Text;
+                string formaPago = cboFormaPago.Text;
+                string fechaPago = DateTime.Now.ToShortDateString();
+                string vencimiento = vencimientoCalc.ToShortDateString();
+
+                //SOCIO -> CARNET + COMPROBANTE
+                if(rdoSocio.Checked)
                 {
-                    PersonasDatos pd = new PersonasDatos();
-                    DataTable personaDatos = pd.BuscarPersonaPorId(IdPersona);
-
-                    string nombre = personaDatos.Rows[0]["nombre"].ToString();
-                    string apellido = personaDatos.Rows[0]["apellido"].ToString();
-                    string dni = personaDatos.Rows[0]["dni"].ToString();
-                    string vencimiento = vencimientoCalc.ToShortDateString();
-
-                    frmCarnetSocio carnet = new frmCarnetSocio(nombre, apellido, dni, idGenerado.ToString(), vencimiento);
+                    frmCarnetSocio carnet = new frmCarnetSocio(
+                        nombre,
+                        apellido,
+                        dni,
+                        idGenerado.ToString(),
+                        vencimiento
+                        );
                     carnet.ShowDialog();
+
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni,
+                        monto,
+                        formaPago,
+                        fechaPago,
+                        vencimiento
+                        );
+                    comprobante.ShowDialog();
+                }
+                else //NO SOCIO -> COMPROBANTE
+                {
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni,
+                        monto,
+                        formaPago,
+                        fechaPago
+                        );
+                    comprobante.ShowDialog();
                 }
                 this.Close();
             }
@@ -123,7 +157,6 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 MessageBox.Show("Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.Hide();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
