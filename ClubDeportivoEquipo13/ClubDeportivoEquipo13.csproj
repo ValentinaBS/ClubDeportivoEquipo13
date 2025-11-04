@@ -106,6 +106,8 @@
     <Compile Include="Dominio\Persona.cs" />
     <Compile Include="Dominio\Socio.cs" />
     <Compile Include="Entidades\E_Persona.cs" />
+    <Compile Include="Enums\AyudanteEnums.cs" />
+    <Compile Include="Enums\Enumeraciones.cs" />
     <Compile Include="Forms\frmCarnetSocio.cs">
       <SubType>Form</SubType>
     </Compile>

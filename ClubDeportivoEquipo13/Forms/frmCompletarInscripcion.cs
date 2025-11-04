@@ -1,4 +1,5 @@
 ﻿using ClubDeportivoEquipo13.Datos;
+using ClubDeportivoEquipo13.Enums;
 using ClubDeportivoEquipo13.Dominio;
 using System;
 using System.Collections.Generic;
@@ -26,19 +27,9 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void InitializeComboBox()
         {
-            var values = Enum.GetValues(typeof(Datos.TiposDePago)).Cast<Datos.TiposDePago>();
+            // Enum - Forma de pago
+            AyudanteEnums.BindEnumToComboBox<Enums.TiposDePago>(cboFormaPago);
 
-            foreach (var value in values)
-            {
-                cboFormaPago.Items.Add(GetEnumDescription(value));
-            }
-        }
-
-        private string GetEnumDescription(Enum value)
-        {
-            var field = value.GetType().GetField(value.ToString());
-            var attr = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-            return attr?.Description ?? value.ToString();
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -57,7 +48,7 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 int idGenerado = 0;
                 if (rdoSocio.Checked)
-                {
+                { 
                     // Crear objeto Socio con la primera cuota mensual
                     Socio socio = new Socio
                     {
@@ -161,7 +152,6 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Borra la persona creada en la base de datos
             
 
             
@@ -170,9 +160,8 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void rdoSocio_CheckedChanged(object sender, EventArgs e)
         {
-            // Muestra el selector de fecha
-            lblFecha.Visible = true;
-            dtpFecha.Visible = true;
+            // Muestra opciones de cuotas
+            AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: false);
         }
 
         private void cboFormaPago_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,9 +171,12 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void rdoNoSocio_CheckedChanged(object sender, EventArgs e)
         {
+
+            // Esconde opciones de cuotas
+            AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: true);
+
             // Esconde el selector de fecha
-            lblFecha.Visible = false;
-            dtpFecha.Visible = false;
+            dtpFecha.Enabled = false;
         }
     }
 }
