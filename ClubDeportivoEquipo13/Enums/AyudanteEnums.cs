@@ -38,10 +38,10 @@ namespace ClubDeportivoEquipo13.Enums
             var allValues = Enum.GetValues(typeof(TiposDePago)).Cast<TiposDePago>();
 
             var filteredValues = hideCuotas
-                ? allValues.Where(x => x != TiposDePago.Tarjeta3Cuotas && x != TiposDePago.Tarjeta6Cuotas) // HIDE cuotas
-                : allValues; // SHOW all options
+                ? allValues.Where(x => x != TiposDePago.Tarjeta3Cuotas && x != TiposDePago.Tarjeta6Cuotas) // Esconde cuotas
+                : allValues; // Muestra todos los valores
 
-            // Save current selection if needed
+            // Guarda la selecci{on
             var seleccion = comboBox.SelectedValue;
 
             comboBox.DataSource = filteredValues
@@ -55,7 +55,6 @@ namespace ClubDeportivoEquipo13.Enums
             comboBox.DisplayMember = "Descripcion";
             comboBox.ValueMember = "Valor";
 
-            // Restore selection if it exists in the new filtered list
             if (seleccion != null && filteredValues.Contains((TiposDePago)seleccion))
             {
                 comboBox.SelectedValue = seleccion;

@@ -53,7 +53,8 @@ namespace ClubDeportivoEquipo13.Forms
                     Socio socio = new Socio
                     {
                         IdPersona = IdPersona,
-                        FechaVencimiento = vencimientoCalc,
+                        // le agrega 1 mes a la fecha de pago, indicando el vencimiento
+                        FechaVencimiento = dtpFecha.Value.AddMonths(1),
                         Cuota = new CuotaMensual
                         {
                             Monto = Convert.ToDouble(txtMonto.Text),
@@ -175,7 +176,7 @@ namespace ClubDeportivoEquipo13.Forms
             // Esconde opciones de cuotas
             AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: true);
 
-            // Esconde el selector de fecha
+            // Deshabilita el selector de fecha
             dtpFecha.Enabled = false;
         }
     }
