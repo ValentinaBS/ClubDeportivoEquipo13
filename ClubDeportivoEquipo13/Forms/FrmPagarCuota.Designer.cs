@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.lblPagarCuota = new System.Windows.Forms.Label();
-            this.lblPersona = new System.Windows.Forms.Label();
-            this.cboPersona = new System.Windows.Forms.ComboBox();
+            this.lblDni = new System.Windows.Forms.Label();
             this.lblTipoDeCuota = new System.Windows.Forms.Label();
             this.rdoMensual = new System.Windows.Forms.RadioButton();
             this.rdoDiaria = new System.Windows.Forms.RadioButton();
@@ -42,6 +41,13 @@
             this.btnRegistrarPago = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cboFormaPago = new System.Windows.Forms.ComboBox();
+            this.txtDni = new System.Windows.Forms.TextBox();
+            this.cboHorario = new System.Windows.Forms.ComboBox();
+            this.grpNoSocios = new System.Windows.Forms.GroupBox();
+            this.cboActividad = new System.Windows.Forms.ComboBox();
+            this.lblActividad = new System.Windows.Forms.Label();
+            this.lblActividadHorario = new System.Windows.Forms.Label();
+            this.grpNoSocios.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPagarCuota
@@ -53,22 +59,14 @@
             this.lblPagarCuota.TabIndex = 0;
             this.lblPagarCuota.Text = "Pagar Cuota";
             // 
-            // lblPersona
+            // lblDni
             // 
-            this.lblPersona.AutoSize = true;
-            this.lblPersona.Location = new System.Drawing.Point(43, 54);
-            this.lblPersona.Name = "lblPersona";
-            this.lblPersona.Size = new System.Drawing.Size(49, 13);
-            this.lblPersona.TabIndex = 1;
-            this.lblPersona.Text = "Persona:";
-            // 
-            // cboPersona
-            // 
-            this.cboPersona.FormattingEnabled = true;
-            this.cboPersona.Location = new System.Drawing.Point(103, 51);
-            this.cboPersona.Name = "cboPersona";
-            this.cboPersona.Size = new System.Drawing.Size(201, 21);
-            this.cboPersona.TabIndex = 2;
+            this.lblDni.AutoSize = true;
+            this.lblDni.Location = new System.Drawing.Point(13, 51);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(71, 13);
+            this.lblDni.TabIndex = 1;
+            this.lblDni.Text = "Persona DNI:";
             // 
             // lblTipoDeCuota
             // 
@@ -148,7 +146,7 @@
             // 
             // btnRegistrarPago
             // 
-            this.btnRegistrarPago.Location = new System.Drawing.Point(177, 234);
+            this.btnRegistrarPago.Location = new System.Drawing.Point(177, 312);
             this.btnRegistrarPago.Name = "btnRegistrarPago";
             this.btnRegistrarPago.Size = new System.Drawing.Size(106, 43);
             this.btnRegistrarPago.TabIndex = 13;
@@ -157,7 +155,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(37, 234);
+            this.btnCancelar.Location = new System.Drawing.Point(37, 312);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(106, 43);
             this.btnCancelar.TabIndex = 14;
@@ -173,13 +171,68 @@
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(121, 21);
             this.cboFormaPago.TabIndex = 15;
-            this.cboFormaPago.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(103, 48);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(122, 20);
+            this.txtDni.TabIndex = 16;
+            // 
+            // cboHorario
+            // 
+            this.cboHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHorario.Enabled = false;
+            this.cboHorario.Location = new System.Drawing.Point(168, 271);
+            this.cboHorario.Name = "cboHorario";
+            this.cboHorario.Size = new System.Drawing.Size(100, 21);
+            this.cboHorario.TabIndex = 17;
+            // 
+            // grpNoSocios
+            // 
+            this.grpNoSocios.Controls.Add(this.cboActividad);
+            this.grpNoSocios.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpNoSocios.Location = new System.Drawing.Point(31, 230);
+            this.grpNoSocios.Name = "grpNoSocios";
+            this.grpNoSocios.Size = new System.Drawing.Size(255, 74);
+            this.grpNoSocios.TabIndex = 20;
+            this.grpNoSocios.TabStop = false;
+            this.grpNoSocios.Text = "No-Socios";
+            // 
+            // cboActividad
+            // 
+            this.cboActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboActividad.Enabled = false;
+            this.cboActividad.Location = new System.Drawing.Point(17, 39);
+            this.cboActividad.Name = "cboActividad";
+            this.cboActividad.Size = new System.Drawing.Size(100, 24);
+            this.cboActividad.TabIndex = 17;
+            // 
+            // lblActividad
+            // 
+            this.lblActividad.Location = new System.Drawing.Point(48, 251);
+            this.lblActividad.Name = "lblActividad";
+            this.lblActividad.Size = new System.Drawing.Size(100, 14);
+            this.lblActividad.TabIndex = 18;
+            this.lblActividad.Text = "Actividad:";
+            // 
+            // lblActividadHorario
+            // 
+            this.lblActividadHorario.Location = new System.Drawing.Point(167, 251);
+            this.lblActividadHorario.Name = "lblActividadHorario";
+            this.lblActividadHorario.Size = new System.Drawing.Size(112, 20);
+            this.lblActividadHorario.TabIndex = 19;
+            this.lblActividadHorario.Text = "Horarios Disponibles:";
             // 
             // frmPagarCuota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 297);
+            this.ClientSize = new System.Drawing.Size(316, 364);
+            this.Controls.Add(this.cboHorario);
+            this.Controls.Add(this.lblActividad);
+            this.Controls.Add(this.lblActividadHorario);
+            this.Controls.Add(this.txtDni);
             this.Controls.Add(this.cboFormaPago);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnRegistrarPago);
@@ -191,12 +244,13 @@
             this.Controls.Add(this.rdoDiaria);
             this.Controls.Add(this.rdoMensual);
             this.Controls.Add(this.lblTipoDeCuota);
-            this.Controls.Add(this.cboPersona);
-            this.Controls.Add(this.lblPersona);
+            this.Controls.Add(this.lblDni);
             this.Controls.Add(this.lblPagarCuota);
+            this.Controls.Add(this.grpNoSocios);
             this.Name = "frmPagarCuota";
             this.Text = "Pagar Cuota";
             this.Load += new System.EventHandler(this.FrmPagarCuota_Load);
+            this.grpNoSocios.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,8 +259,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblPagarCuota;
-        private System.Windows.Forms.Label lblPersona;
-        private System.Windows.Forms.ComboBox cboPersona;
+        private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Label lblTipoDeCuota;
         private System.Windows.Forms.RadioButton rdoMensual;
         private System.Windows.Forms.RadioButton rdoDiaria;
@@ -218,5 +271,11 @@
         private System.Windows.Forms.Button btnRegistrarPago;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cboFormaPago;
+        private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.ComboBox cboHorario;
+        private System.Windows.Forms.GroupBox grpNoSocios;
+        private System.Windows.Forms.ComboBox cboActividad;
+        private System.Windows.Forms.Label lblActividad;
+        private System.Windows.Forms.Label lblActividadHorario;
     }
 }

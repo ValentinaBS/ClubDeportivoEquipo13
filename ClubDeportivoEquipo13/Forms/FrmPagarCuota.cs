@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubDeportivoEquipo13.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ClubDeportivoEquipo13.Forms
 {
@@ -20,62 +22,65 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void InitializeComboBox()
         {
-            // Forma de pago
-            cboFormaPago.Items.AddRange(
-                Enum.GetValues(typeof(Datos.TiposDePago))
-                    .Cast<Datos.TiposDePago>()
-                    .Select(v => GetEnumDescription(v))
-                    .ToArray()
-            );
+            // Enum - Forma de pago
+            AyudanteEnums.BindEnumToComboBox<TiposDePago>(cboFormaPago);
 
-            // Tipo de registro
-            cboPersona.Items.AddRange(
-                Enum.GetValues(typeof(Datos.TiposDeRegistro))
-                    .Cast<Datos.TiposDeRegistro>()
-                    .Select(v => GetEnumDescription(v))
-                    .ToArray()
-            );
         }
-        private string GetEnumDescription(Enum value)
-        {
-            var field = value.GetType().GetField(value.ToString());
-            var attr = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-            return attr?.Description ?? value.ToString();
-        }
+
+
 
         private void FrmPagarCuota_Load(object sender, EventArgs e)
         {
+            // Buscador de fecha, fecha minima del día de hoy
+            dtpFecha.MinDate = DateTime.Now;
+            // Fecha máxima, último día del mes actual
+            dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
 
         }
 
         private void rdoMensual_CheckedChanged(object sender, EventArgs e)
         {
-            lblFechaDePago.Visible = true;
-            dtpFecha.Visible = true;
+            // Habilita cambiar fecha de pago
+            dtpFecha.Enabled = true;
+
+            // Muestra opciones de cuotas
+            AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: false);
+
+            //Desabilita elección de Actividad y Horario
+            cboHorario.Enabled = false;
+            cboActividad.Enabled = false;
+
+
         }
 
         private void rdoDiaria_CheckedChanged(object sender, EventArgs e)
         {
-            lblFechaDePago.Visible = false;
-            dtpFecha.Visible = false;
+            //Habilita elección de Actividad y Horario
+            cboHorario.Enabled = true;
+            cboActividad.Enabled = true;
+
+            // Bloquea cambiar fecha de pago
+            dtpFecha.Enabled = false;
+
+            // Esconde las opciones de cuotas
+            AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: true);
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdoEfectivo_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnRegistrarPago_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDni.Text))
+            {
+                MessageBox.Show("Debe completar el campo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

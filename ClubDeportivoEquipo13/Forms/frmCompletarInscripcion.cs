@@ -161,6 +161,10 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void rdoSocio_CheckedChanged(object sender, EventArgs e)
         {
+            //Deshabilita elección de Actividad y Horario
+            cboHorario.Enabled = false;
+            cboActividad.Enabled = false;
+
             // Muestra opciones de cuotas
             AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: false);
         }
@@ -172,6 +176,9 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void rdoNoSocio_CheckedChanged(object sender, EventArgs e)
         {
+            //Habilita elección de Actividad y Horario
+            cboHorario.Enabled = true;
+            cboActividad.Enabled = true;
 
             // Esconde opciones de cuotas
             AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: true);
