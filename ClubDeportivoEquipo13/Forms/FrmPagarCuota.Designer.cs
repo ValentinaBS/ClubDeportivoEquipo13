@@ -109,15 +109,14 @@
             this.lblFechaDePago.Size = new System.Drawing.Size(83, 13);
             this.lblFechaDePago.TabIndex = 6;
             this.lblFechaDePago.Text = "Fecha de Pago:";
-            this.lblFechaDePago.Visible = false;
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Enabled = false;
             this.dtpFecha.Location = new System.Drawing.Point(103, 118);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(201, 20);
             this.dtpFecha.TabIndex = 7;
-            this.dtpFecha.Visible = false;
             // 
             // lblMonto
             // 
@@ -182,19 +181,22 @@
             // cboHorario
             // 
             this.cboHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboHorario.Enabled = false;
-            this.cboHorario.Location = new System.Drawing.Point(168, 271);
+            this.cboHorario.Location = new System.Drawing.Point(134, 39);
             this.cboHorario.Name = "cboHorario";
             this.cboHorario.Size = new System.Drawing.Size(100, 21);
             this.cboHorario.TabIndex = 17;
             // 
             // grpNoSocios
             // 
+            this.grpNoSocios.Controls.Add(this.cboHorario);
             this.grpNoSocios.Controls.Add(this.cboActividad);
-            this.grpNoSocios.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpNoSocios.Location = new System.Drawing.Point(31, 230);
+            this.grpNoSocios.Controls.Add(this.lblActividadHorario);
+            this.grpNoSocios.Controls.Add(this.lblActividad);
+            this.grpNoSocios.Enabled = false;
+            this.grpNoSocios.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpNoSocios.Location = new System.Drawing.Point(27, 232);
             this.grpNoSocios.Name = "grpNoSocios";
-            this.grpNoSocios.Size = new System.Drawing.Size(255, 74);
+            this.grpNoSocios.Size = new System.Drawing.Size(268, 74);
             this.grpNoSocios.TabIndex = 20;
             this.grpNoSocios.TabStop = false;
             this.grpNoSocios.Text = "No-Socios";
@@ -202,15 +204,15 @@
             // cboActividad
             // 
             this.cboActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboActividad.Enabled = false;
-            this.cboActividad.Location = new System.Drawing.Point(17, 39);
+            this.cboActividad.Location = new System.Drawing.Point(12, 39);
             this.cboActividad.Name = "cboActividad";
-            this.cboActividad.Size = new System.Drawing.Size(100, 24);
+            this.cboActividad.Size = new System.Drawing.Size(100, 21);
             this.cboActividad.TabIndex = 17;
+            this.cboActividad.SelectedIndexChanged += new System.EventHandler(this.cboActividad_SelectedIndexChanged);
             // 
             // lblActividad
             // 
-            this.lblActividad.Location = new System.Drawing.Point(48, 251);
+            this.lblActividad.Location = new System.Drawing.Point(17, 22);
             this.lblActividad.Name = "lblActividad";
             this.lblActividad.Size = new System.Drawing.Size(100, 14);
             this.lblActividad.TabIndex = 18;
@@ -218,9 +220,9 @@
             // 
             // lblActividadHorario
             // 
-            this.lblActividadHorario.Location = new System.Drawing.Point(167, 251);
+            this.lblActividadHorario.Location = new System.Drawing.Point(123, 23);
             this.lblActividadHorario.Name = "lblActividadHorario";
-            this.lblActividadHorario.Size = new System.Drawing.Size(112, 20);
+            this.lblActividadHorario.Size = new System.Drawing.Size(129, 20);
             this.lblActividadHorario.TabIndex = 19;
             this.lblActividadHorario.Text = "Horarios Disponibles:";
             // 
@@ -229,9 +231,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 364);
-            this.Controls.Add(this.cboHorario);
-            this.Controls.Add(this.lblActividad);
-            this.Controls.Add(this.lblActividadHorario);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.cboFormaPago);
             this.Controls.Add(this.btnCancelar);
