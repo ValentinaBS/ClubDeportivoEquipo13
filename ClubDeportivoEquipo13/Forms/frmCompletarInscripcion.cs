@@ -29,6 +29,8 @@ namespace ClubDeportivoEquipo13.Forms
         {
             // Enum - Forma de pago
             AyudanteEnums.BindEnumToComboBox<Enums.TiposDePago>(cboFormaPago);
+            // Enum - Tipos de actividad
+            AyudanteEnums.BindEnumToComboBox<TiposDeActividades>(cboActividad);
 
         }
 
@@ -153,7 +155,6 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
 
             
             this.Hide(); // Cierra el formulario sin crear instancias duplicadas
@@ -161,9 +162,11 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void rdoSocio_CheckedChanged(object sender, EventArgs e)
         {
-            //Deshabilita elección de Actividad y Horario
-            cboHorario.Enabled = false;
-            cboActividad.Enabled = false;
+            // Habilita cambiar fecha de pago
+            dtpFecha.Enabled = true;
+
+            //Desabilita elección de Actividad y Horario
+            grpNoSocios.Enabled = false;
 
             // Muestra opciones de cuotas
             AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: false);
@@ -177,14 +180,47 @@ namespace ClubDeportivoEquipo13.Forms
         private void rdoNoSocio_CheckedChanged(object sender, EventArgs e)
         {
             //Habilita elección de Actividad y Horario
-            cboHorario.Enabled = true;
-            cboActividad.Enabled = true;
+            grpNoSocios.Enabled = true;
 
-            // Esconde opciones de cuotas
-            AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: true);
-
-            // Deshabilita el selector de fecha
+            // Bloquea cambiar fecha de pago
             dtpFecha.Enabled = false;
+            //Obliga a que sea el dia de hoy
+            dtpFecha.Value = DateTime.Now;
+
+            // Esconde las opciones de cuotas
+            AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: true);
+        }
+
+        private void frmCompletarInscripcion_Load(object sender, EventArgs e)
+        {
+            // Buscador de fecha, fecha minima del día de hoy
+            dtpFecha.MinDate = DateTime.Now;
+            // Fecha máxima, último día del mes actual
+            dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+        }
+
+        private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Verifica que no sea nulo
+            if (cboActividad.SelectedItem is null) return;
+
+            var seleccion = cboActividad.SelectedItem;
+
+            // Selecciona la propiedad "Valor" del objeto anóNIMO
+            var valorProperty = seleccion.GetType().GetProperty("Valor");
+            var value = valorProperty.GetValue(seleccion, null);
+
+            // Guarda el tipo de actividad seleccionada
+            TiposDeActividades actividad = (TiposDeActividades)value;
+
+            if (actividad == TiposDeActividades.Musculacion)
+            {
+                AyudanteEnums.BindEnumToComboBox<HorarioMusculacion>(cboHorario);
+            }
+            else if (actividad == TiposDeActividades.Aparatos)
+            {
+                AyudanteEnums.BindEnumToComboBox<HorarioAparatos>(cboHorario);
+            }
         }
     }
 }

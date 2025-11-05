@@ -35,17 +35,17 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblMonto = new System.Windows.Forms.Label();
             this.lblFormaPago = new System.Windows.Forms.Label();
-            this.cboHorario = new System.Windows.Forms.ComboBox();
-            this.lblActividad = new System.Windows.Forms.Label();
-            this.lblActividadHorario = new System.Windows.Forms.Label();
             this.grpNoSocios = new System.Windows.Forms.GroupBox();
+            this.cboHorario = new System.Windows.Forms.ComboBox();
             this.cboActividad = new System.Windows.Forms.ComboBox();
+            this.lblActividadHorario = new System.Windows.Forms.Label();
+            this.lblActividad = new System.Windows.Forms.Label();
             this.grpNoSocios.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdoSocio
             // 
-            this.rdoSocio.Location = new System.Drawing.Point(30, 30);
+            this.rdoSocio.Location = new System.Drawing.Point(33, 33);
             this.rdoSocio.Name = "rdoSocio";
             this.rdoSocio.Size = new System.Drawing.Size(104, 24);
             this.rdoSocio.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             // rdoNoSocio
             // 
-            this.rdoNoSocio.Location = new System.Drawing.Point(150, 30);
+            this.rdoNoSocio.Location = new System.Drawing.Point(146, 33);
             this.rdoNoSocio.Name = "rdoNoSocio";
             this.rdoNoSocio.Size = new System.Drawing.Size(104, 24);
             this.rdoNoSocio.TabIndex = 1;
@@ -63,9 +63,10 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Enabled = false;
             this.dtpFecha.Location = new System.Drawing.Point(30, 90);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(220, 20);
             this.dtpFecha.TabIndex = 2;
             // 
             // txtMonto
@@ -135,57 +136,58 @@
             this.lblFormaPago.TabIndex = 11;
             this.lblFormaPago.Text = "Forma de pago:";
             // 
+            // grpNoSocios
+            // 
+            this.grpNoSocios.Controls.Add(this.cboHorario);
+            this.grpNoSocios.Controls.Add(this.cboActividad);
+            this.grpNoSocios.Controls.Add(this.lblActividadHorario);
+            this.grpNoSocios.Controls.Add(this.lblActividad);
+            this.grpNoSocios.Enabled = false;
+            this.grpNoSocios.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpNoSocios.Location = new System.Drawing.Point(1, 180);
+            this.grpNoSocios.Name = "grpNoSocios";
+            this.grpNoSocios.Size = new System.Drawing.Size(279, 74);
+            this.grpNoSocios.TabIndex = 21;
+            this.grpNoSocios.TabStop = false;
+            this.grpNoSocios.Text = "No-Socios";
+            // 
             // cboHorario
             // 
             this.cboHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboHorario.Enabled = false;
-            this.cboHorario.Location = new System.Drawing.Point(150, 221);
+            this.cboHorario.Location = new System.Drawing.Point(149, 39);
             this.cboHorario.Name = "cboHorario";
             this.cboHorario.Size = new System.Drawing.Size(100, 21);
-            this.cboHorario.TabIndex = 13;
-            // 
-            // lblActividad
-            // 
-            this.lblActividad.Location = new System.Drawing.Point(30, 201);
-            this.lblActividad.Name = "lblActividad";
-            this.lblActividad.Size = new System.Drawing.Size(100, 14);
-            this.lblActividad.TabIndex = 14;
-            this.lblActividad.Text = "Actividad:";
-            // 
-            // lblActividadHorario
-            // 
-            this.lblActividadHorario.Location = new System.Drawing.Point(149, 201);
-            this.lblActividadHorario.Name = "lblActividadHorario";
-            this.lblActividadHorario.Size = new System.Drawing.Size(112, 20);
-            this.lblActividadHorario.TabIndex = 15;
-            this.lblActividadHorario.Text = "Horarios Disponibles:";
-            // 
-            // grpNoSocios
-            // 
-            this.grpNoSocios.Controls.Add(this.cboActividad);
-            this.grpNoSocios.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpNoSocios.Location = new System.Drawing.Point(13, 180);
-            this.grpNoSocios.Name = "grpNoSocios";
-            this.grpNoSocios.Size = new System.Drawing.Size(255, 74);
-            this.grpNoSocios.TabIndex = 16;
-            this.grpNoSocios.TabStop = false;
-            this.grpNoSocios.Text = "No-Socios";
+            this.cboHorario.TabIndex = 17;
             // 
             // cboActividad
             // 
             this.cboActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboActividad.Enabled = false;
-            this.cboActividad.Location = new System.Drawing.Point(17, 39);
+            this.cboActividad.Location = new System.Drawing.Point(29, 39);
             this.cboActividad.Name = "cboActividad";
-            this.cboActividad.Size = new System.Drawing.Size(100, 24);
+            this.cboActividad.Size = new System.Drawing.Size(100, 21);
             this.cboActividad.TabIndex = 17;
+            this.cboActividad.SelectedIndexChanged += new System.EventHandler(this.cboActividad_SelectedIndexChanged);
+            // 
+            // lblActividadHorario
+            // 
+            this.lblActividadHorario.Location = new System.Drawing.Point(142, 22);
+            this.lblActividadHorario.Name = "lblActividadHorario";
+            this.lblActividadHorario.Size = new System.Drawing.Size(129, 20);
+            this.lblActividadHorario.TabIndex = 19;
+            this.lblActividadHorario.Text = "Horarios Disponibles:";
+            // 
+            // lblActividad
+            // 
+            this.lblActividad.Location = new System.Drawing.Point(32, 22);
+            this.lblActividad.Name = "lblActividad";
+            this.lblActividad.Size = new System.Drawing.Size(100, 14);
+            this.lblActividad.TabIndex = 18;
+            this.lblActividad.Text = "Actividad:";
             // 
             // frmCompletarInscripcion
             // 
             this.ClientSize = new System.Drawing.Size(280, 302);
-            this.Controls.Add(this.cboHorario);
-            this.Controls.Add(this.lblActividad);
-            this.Controls.Add(this.lblActividadHorario);
+            this.Controls.Add(this.grpNoSocios);
             this.Controls.Add(this.rdoSocio);
             this.Controls.Add(this.rdoNoSocio);
             this.Controls.Add(this.dtpFecha);
@@ -197,18 +199,19 @@
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblMonto);
             this.Controls.Add(this.lblFormaPago);
-            this.Controls.Add(this.grpNoSocios);
             this.Name = "frmCompletarInscripcion";
             this.Text = "Completar Inscripción";
+            this.Load += new System.EventHandler(this.frmCompletarInscripcion_Load);
             this.grpNoSocios.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-        private System.Windows.Forms.ComboBox cboHorario;
-        private System.Windows.Forms.Label lblActividad;
-        private System.Windows.Forms.Label lblActividadHorario;
+
         private System.Windows.Forms.GroupBox grpNoSocios;
+        private System.Windows.Forms.ComboBox cboHorario;
         private System.Windows.Forms.ComboBox cboActividad;
+        private System.Windows.Forms.Label lblActividadHorario;
+        private System.Windows.Forms.Label lblActividad;
     }
 }
