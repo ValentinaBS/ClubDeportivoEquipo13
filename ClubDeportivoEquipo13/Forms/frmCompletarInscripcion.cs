@@ -36,7 +36,8 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            DateTime vencimientoCalc = dtpFecha.Value.Date.AddDays(30);
+            // le agrega 1 mes a la fecha de pago, indicando el vencimiento
+            DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
             if (!rdoSocio.Checked && !rdoNoSocio.Checked)
             {
                 MessageBox.Show("Debe seleccionar tipo de inscripción.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -55,8 +56,8 @@ namespace ClubDeportivoEquipo13.Forms
                     Socio socio = new Socio
                     {
                         IdPersona = IdPersona,
-                        // le agrega 1 mes a la fecha de pago, indicando el vencimiento
-                        FechaVencimiento = dtpFecha.Value.AddMonths(1),
+                        
+                        FechaVencimiento = vencimientoCalc,
                         Cuota = new CuotaMensual
                         {
                             Monto = Convert.ToDouble(txtMonto.Text),
@@ -155,8 +156,23 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            PersonasDatos datos = new PersonasDatos();
 
-            
+            // Borrar persona creada previamente
+            datos.EliminarUltimaPersona();
+
+            // Mensajes de confirmación si se borró o no    
+            bool fueEliminado = datos.EliminarUltimaPersona();
+
+            if (fueEliminado)
+            {
+                MessageBox.Show("Última persona fue eliminada correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró ninguna persona para eliminar");
+            }
+
             this.Hide(); // Cierra el formulario sin crear instancias duplicadas
         }
 

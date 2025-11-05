@@ -144,5 +144,46 @@ namespace ClubDeportivoEquipo13.Datos
             return dt;
         }
 
+        public bool EliminarUltimaPersona()
+        {
+            bool eliminado = false;
+
+            try
+            {
+                using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+                {
+                    sqlCon.Open();
+
+                    // Obtiene el ultimo id creado
+                    string queryId = "SELECT MAX(IdPersona) FROM Persona";
+                    MySqlCommand cmdGetId = new MySqlCommand(queryId, sqlCon);
+                    object result = cmdGetId.ExecuteScalar();
+
+                    if (result == DBNull.Value || result == null)
+                    {
+                        throw new Exception("No hay personas registradas para eliminar.");
+                    }
+
+                    int ultimoId = Convert.ToInt32(result);
+
+                    // Borra la persona con el último id
+                    string queryDelete = "DELETE FROM Persona WHERE IdPersona = @id";
+                    MySqlCommand cmdDelete = new MySqlCommand(queryDelete, sqlCon);
+                    cmdDelete.Parameters.AddWithValue("@id", ultimoId);
+
+                    int filas = cmdDelete.ExecuteNonQuery();
+
+                    if (filas > 0)
+                        eliminado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar persona: " + ex.Message);
+            }
+
+            return eliminado;
+        }
+
     }
 }
