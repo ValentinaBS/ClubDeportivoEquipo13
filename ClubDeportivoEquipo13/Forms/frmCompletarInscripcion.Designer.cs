@@ -118,7 +118,6 @@
             this.lblFecha.Size = new System.Drawing.Size(150, 20);
             this.lblFecha.TabIndex = 9;
             this.lblFecha.Text = "Fecha de inscripción:";
-            this.lblFecha.Visible = false;
             // 
             // lblMonto
             // 
@@ -149,7 +148,7 @@
             this.grpNoSocios.Size = new System.Drawing.Size(279, 74);
             this.grpNoSocios.TabIndex = 21;
             this.grpNoSocios.TabStop = false;
-            this.grpNoSocios.Text = "No-Socios";
+            this.grpNoSocios.Text = "Selector de Actividades:";
             // 
             // cboHorario
             // 
