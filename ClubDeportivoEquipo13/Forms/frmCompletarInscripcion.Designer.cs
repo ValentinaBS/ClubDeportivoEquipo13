@@ -61,7 +61,6 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(200, 20);
             this.dtpFecha.TabIndex = 2;
-            this.dtpFecha.Visible = false;
             // 
             // txtMonto
             // 
@@ -73,6 +72,10 @@
             // cboFormaPago
             // 
             this.cboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFormaPago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Debito",
+            "Tarjeta"});
             this.cboFormaPago.Location = new System.Drawing.Point(150, 150);
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(100, 21);

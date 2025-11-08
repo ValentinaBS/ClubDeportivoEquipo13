@@ -128,5 +128,21 @@ namespace ClubDeportivoEquipo13.Datos
             }
             return salida;
         }
+        public DataTable BuscarPersonaPorId(int idPersona)
+        {
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
+            {
+                cn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT nombre, apellido, dni FROM persona WHERE idPersona = @id", cn);
+                cmd.Parameters.AddWithValue("@id", idPersona);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+
     }
 }

@@ -14,7 +14,7 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "" || txtPass.Text == "")
+             if (txtUsuario.Text == "" || txtPass.Text == "")
             {
                 MessageBox.Show("Debe completar usuario y contraseña.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
