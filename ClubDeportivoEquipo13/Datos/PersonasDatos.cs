@@ -144,45 +144,41 @@ namespace ClubDeportivoEquipo13.Datos
             return dt;
         }
 
-        public bool EliminarUltimaPersona()
+        public DataTable ListarSociosVencidos(DateTime fechaConsulta)
         {
-            bool eliminado = false;
-
+            DataTable dt = new DataTable();
             try
             {
-                using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+                using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
                 {
-                    sqlCon.Open();
+                    cn.Open();
 
-                    // Obtiene el ultimo id creado
-                    string queryId = "SELECT MAX(IdPersona) FROM Persona";
-                    MySqlCommand cmdGetId = new MySqlCommand(queryId, sqlCon);
-                    object result = cmdGetId.ExecuteScalar();
+                    // Filtra donde la fecha de vencimiento sea MENOR a la fecha de consulta.
+                    string query = @"
+                    SELECT 
+                        CONCAT(p.nombre, ' ', p.apellido) AS Socio, 
+                        s.idSocio AS IdSocio, 
+                        s.fechaVencimiento AS FechaVencimiento
+                    FROM 
+                        socio s
+                    JOIN 
+                        persona p ON s.idPersona = p.idPersona
+                    WHERE 
+                        s.fechaVencimiento < @fechaConsulta";
 
-                    if (result == DBNull.Value || result == null)
-                    {
-                        throw new Exception("No hay personas registradas para eliminar.");
-                    }
+                    MySqlCommand cmd = new MySqlCommand(query, cn);
 
-                    int ultimoId = Convert.ToInt32(result);
+                    cmd.Parameters.AddWithValue("@fechaConsulta", fechaConsulta.Date);
 
-                    // Borra la persona con el último id
-                    string queryDelete = "DELETE FROM Persona WHERE IdPersona = @id";
-                    MySqlCommand cmdDelete = new MySqlCommand(queryDelete, sqlCon);
-                    cmdDelete.Parameters.AddWithValue("@id", ultimoId);
-
-                    int filas = cmdDelete.ExecuteNonQuery();
-
-                    if (filas > 0)
-                        eliminado = true;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar persona: " + ex.Message);
+                throw new Exception("Error al listar socios vencidos: " + ex.Message);
             }
-
-            return eliminado;
+            return dt;
         }
 
     }
