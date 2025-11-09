@@ -2,15 +2,8 @@
 {
     partial class frmVencimientos
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -43,15 +36,15 @@
             // lblTitulo
             // 
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(44, 9);
+            this.lblTitulo.Location = new System.Drawing.Point(45, 19);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(277, 29);
+            this.lblTitulo.Size = new System.Drawing.Size(266, 25);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "SOCIOS CON CUOTAS VENCIDAS";
             // 
             // dtpFechaDeConsulta
             // 
-            this.dtpFechaDeConsulta.Location = new System.Drawing.Point(125, 57);
+            this.dtpFechaDeConsulta.Location = new System.Drawing.Point(130, 57);
             this.dtpFechaDeConsulta.Name = "dtpFechaDeConsulta";
             this.dtpFechaDeConsulta.Size = new System.Drawing.Size(201, 20);
             this.dtpFechaDeConsulta.TabIndex = 9;
@@ -60,7 +53,7 @@
             // lblFechaDePago
             // 
             this.lblFechaDePago.AutoSize = true;
-            this.lblFechaDePago.Location = new System.Drawing.Point(20, 63);
+            this.lblFechaDePago.Location = new System.Drawing.Point(25, 63);
             this.lblFechaDePago.Name = "lblFechaDePago";
             this.lblFechaDePago.Size = new System.Drawing.Size(99, 13);
             this.lblFechaDePago.TabIndex = 8;
@@ -68,12 +61,13 @@
             // 
             // btnGenerarListado
             // 
-            this.btnGenerarListado.Location = new System.Drawing.Point(23, 100);
+            this.btnGenerarListado.Location = new System.Drawing.Point(111, 101);
             this.btnGenerarListado.Name = "btnGenerarListado";
             this.btnGenerarListado.Size = new System.Drawing.Size(134, 35);
             this.btnGenerarListado.TabIndex = 10;
             this.btnGenerarListado.Text = "Generar Listado";
             this.btnGenerarListado.UseVisualStyleBackColor = true;
+            this.btnGenerarListado.Click += new System.EventHandler(this.btnGenerarListado_Click);
             // 
             // dataGridView1
             // 
@@ -82,7 +76,7 @@
             this.Socio,
             this.IdSocio,
             this.FechaVencimiento});
-            this.dataGridView1.Location = new System.Drawing.Point(23, 161);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 161);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(303, 161);
             this.dataGridView1.TabIndex = 11;
@@ -104,7 +98,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(134, 342);
+            this.btnAceptar.Location = new System.Drawing.Point(141, 342);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 12;
