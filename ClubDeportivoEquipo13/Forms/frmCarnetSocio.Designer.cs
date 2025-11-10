@@ -203,6 +203,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmCarnetSocio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carnet";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

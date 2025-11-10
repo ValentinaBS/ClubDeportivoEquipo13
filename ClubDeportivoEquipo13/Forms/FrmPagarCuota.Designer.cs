@@ -47,44 +47,49 @@
             // lblPagarCuota
             // 
             this.lblPagarCuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPagarCuota.Location = new System.Drawing.Point(111, 9);
+            this.lblPagarCuota.Location = new System.Drawing.Point(148, 11);
+            this.lblPagarCuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPagarCuota.Name = "lblPagarCuota";
-            this.lblPagarCuota.Size = new System.Drawing.Size(114, 29);
+            this.lblPagarCuota.Size = new System.Drawing.Size(152, 36);
             this.lblPagarCuota.TabIndex = 0;
             this.lblPagarCuota.Text = "Pagar Cuota";
             // 
             // lblPersona
             // 
             this.lblPersona.AutoSize = true;
-            this.lblPersona.Location = new System.Drawing.Point(43, 54);
+            this.lblPersona.Location = new System.Drawing.Point(57, 66);
+            this.lblPersona.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPersona.Name = "lblPersona";
-            this.lblPersona.Size = new System.Drawing.Size(49, 13);
+            this.lblPersona.Size = new System.Drawing.Size(61, 16);
             this.lblPersona.TabIndex = 1;
             this.lblPersona.Text = "Persona:";
             // 
             // cboPersona
             // 
             this.cboPersona.FormattingEnabled = true;
-            this.cboPersona.Location = new System.Drawing.Point(103, 51);
+            this.cboPersona.Location = new System.Drawing.Point(137, 63);
+            this.cboPersona.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboPersona.Name = "cboPersona";
-            this.cboPersona.Size = new System.Drawing.Size(201, 21);
+            this.cboPersona.Size = new System.Drawing.Size(267, 24);
             this.cboPersona.TabIndex = 2;
             // 
             // lblTipoDeCuota
             // 
             this.lblTipoDeCuota.AutoSize = true;
-            this.lblTipoDeCuota.Location = new System.Drawing.Point(13, 89);
+            this.lblTipoDeCuota.Location = new System.Drawing.Point(17, 110);
+            this.lblTipoDeCuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipoDeCuota.Name = "lblTipoDeCuota";
-            this.lblTipoDeCuota.Size = new System.Drawing.Size(79, 13);
+            this.lblTipoDeCuota.Size = new System.Drawing.Size(97, 16);
             this.lblTipoDeCuota.TabIndex = 3;
             this.lblTipoDeCuota.Text = "Tipo De Cuota:";
             // 
             // rdoMensual
             // 
             this.rdoMensual.AutoSize = true;
-            this.rdoMensual.Location = new System.Drawing.Point(129, 87);
+            this.rdoMensual.Location = new System.Drawing.Point(172, 107);
+            this.rdoMensual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoMensual.Name = "rdoMensual";
-            this.rdoMensual.Size = new System.Drawing.Size(65, 17);
+            this.rdoMensual.Size = new System.Drawing.Size(79, 20);
             this.rdoMensual.TabIndex = 4;
             this.rdoMensual.TabStop = true;
             this.rdoMensual.Text = "Mensual";
@@ -94,9 +99,10 @@
             // rdoDiaria
             // 
             this.rdoDiaria.AutoSize = true;
-            this.rdoDiaria.Location = new System.Drawing.Point(209, 87);
+            this.rdoDiaria.Location = new System.Drawing.Point(279, 107);
+            this.rdoDiaria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDiaria.Name = "rdoDiaria";
-            this.rdoDiaria.Size = new System.Drawing.Size(52, 17);
+            this.rdoDiaria.Size = new System.Drawing.Size(64, 20);
             this.rdoDiaria.TabIndex = 5;
             this.rdoDiaria.TabStop = true;
             this.rdoDiaria.Text = "Diaria";
@@ -106,60 +112,67 @@
             // lblFechaDePago
             // 
             this.lblFechaDePago.AutoSize = true;
-            this.lblFechaDePago.Location = new System.Drawing.Point(9, 123);
+            this.lblFechaDePago.Location = new System.Drawing.Point(12, 151);
+            this.lblFechaDePago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFechaDePago.Name = "lblFechaDePago";
-            this.lblFechaDePago.Size = new System.Drawing.Size(83, 13);
+            this.lblFechaDePago.Size = new System.Drawing.Size(103, 16);
             this.lblFechaDePago.TabIndex = 6;
             this.lblFechaDePago.Text = "Fecha de Pago:";
             this.lblFechaDePago.Visible = false;
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(103, 118);
+            this.dtpFecha.Location = new System.Drawing.Point(137, 145);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(201, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(267, 22);
             this.dtpFecha.TabIndex = 7;
             this.dtpFecha.Visible = false;
             // 
             // lblMonto
             // 
             this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(52, 160);
+            this.lblMonto.Location = new System.Drawing.Point(69, 197);
+            this.lblMonto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(40, 13);
+            this.lblMonto.Size = new System.Drawing.Size(47, 16);
             this.lblMonto.TabIndex = 8;
             this.lblMonto.Text = "Monto:";
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(103, 157);
+            this.txtMonto.Location = new System.Drawing.Point(137, 193);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(121, 20);
+            this.txtMonto.Size = new System.Drawing.Size(160, 22);
             this.txtMonto.TabIndex = 9;
             // 
             // lblFormaDePago
             // 
             this.lblFormaDePago.AutoSize = true;
-            this.lblFormaDePago.Location = new System.Drawing.Point(13, 197);
+            this.lblFormaDePago.Location = new System.Drawing.Point(17, 242);
+            this.lblFormaDePago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFormaDePago.Name = "lblFormaDePago";
-            this.lblFormaDePago.Size = new System.Drawing.Size(82, 13);
+            this.lblFormaDePago.Size = new System.Drawing.Size(104, 16);
             this.lblFormaDePago.TabIndex = 10;
             this.lblFormaDePago.Text = "Forma de Pago:";
             // 
             // btnRegistrarPago
             // 
-            this.btnRegistrarPago.Location = new System.Drawing.Point(177, 234);
+            this.btnRegistrarPago.Location = new System.Drawing.Point(236, 288);
+            this.btnRegistrarPago.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegistrarPago.Name = "btnRegistrarPago";
-            this.btnRegistrarPago.Size = new System.Drawing.Size(106, 43);
+            this.btnRegistrarPago.Size = new System.Drawing.Size(141, 53);
             this.btnRegistrarPago.TabIndex = 13;
             this.btnRegistrarPago.Text = "Registrar Pago";
             this.btnRegistrarPago.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(37, 234);
+            this.btnCancelar.Location = new System.Drawing.Point(49, 288);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(106, 43);
+            this.btnCancelar.Size = new System.Drawing.Size(141, 53);
             this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -169,17 +182,18 @@
             // 
             this.cboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFormaPago.FormattingEnabled = true;
-            this.cboFormaPago.Location = new System.Drawing.Point(103, 194);
+            this.cboFormaPago.Location = new System.Drawing.Point(137, 239);
+            this.cboFormaPago.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboFormaPago.Name = "cboFormaPago";
-            this.cboFormaPago.Size = new System.Drawing.Size(121, 21);
+            this.cboFormaPago.Size = new System.Drawing.Size(160, 24);
             this.cboFormaPago.TabIndex = 15;
             this.cboFormaPago.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // frmPagarCuota
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 297);
+            this.ClientSize = new System.Drawing.Size(421, 366);
             this.Controls.Add(this.cboFormaPago);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnRegistrarPago);
@@ -194,7 +208,9 @@
             this.Controls.Add(this.cboPersona);
             this.Controls.Add(this.lblPersona);
             this.Controls.Add(this.lblPagarCuota);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmPagarCuota";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagar Cuota";
             this.Load += new System.EventHandler(this.FrmPagarCuota_Load);
             this.ResumeLayout(false);
