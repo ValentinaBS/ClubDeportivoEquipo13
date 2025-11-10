@@ -45,7 +45,9 @@ namespace ClubDeportivoEquipo13.Forms
                 MessageBox.Show("Carnet impreso correctamente.", "Aviso del sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-
+                this.WindowState = FormWindowState.Normal;
+                this.BringToFront();
+                this.Activate();
                 this.Close();
             }
             catch (Exception ex)

@@ -99,6 +99,8 @@ namespace ClubDeportivoEquipo13.Forms
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorId(IdPersona);
 
+                this.Hide();
+
                 //datos para el comprobante o carnet
                 string nombre = personaDatos.Rows[0]["nombre"].ToString();
                 string apellido = personaDatos.Rows[0]["apellido"].ToString();

@@ -61,8 +61,26 @@ namespace ClubDeportivoEquipo13.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
 
+                this.WindowState = FormWindowState.Normal;
+                this.BringToFront();
+                this.Activate();
+
+                // referencia al menú
+                Form menu = Application.OpenForms["frmMenu"];
+
+                if (menu != null)
+                {
+                    // Si el menú está minimizado, lo restauramos
+                    if (menu.WindowState == FormWindowState.Minimized)
+                        menu.WindowState = FormWindowState.Normal;
+
+                    menu.Show();
+                    menu.BringToFront();
+                    menu.Activate();
+                }              
+                // Cerrar el comprobante después de restaurar el menú
                 this.Close();
-                Application.OpenForms["frmMenu"]?.Show();
+
             }
             catch (Exception ex)
             {

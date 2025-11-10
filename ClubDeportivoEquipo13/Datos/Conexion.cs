@@ -19,7 +19,7 @@ namespace ClubDeportivoEquipo13.Datos
                     "Server=localhost;" +
                     "Database=equipo13_coma;" +
                     "User Id=root;" +
-                    "Password=root;" +
+                    "Password=Sebas2405;" +
                     "Port=3306;";
 
                 return cadena;
