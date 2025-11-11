@@ -131,21 +131,22 @@ namespace ClubDeportivoEquipo13.Forms
 
                 }
 
-                if (idGenerado <= 0)
+                if (idGenerado == -1)
                 {
-                    MessageBox.Show("Error al crear cuota: " + idGenerado, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al crear cuota: El tipo de cuota es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+
+                } else if (idGenerado == 0) {
+                    MessageBox.Show("Error al crear cuota: La Persona no está registrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     MessageBox.Show("Cuota creada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                 }
-                MessageBox.Show("HOLA");
                 // Mostrar comprobante o carnet según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorDni(dni);
-                MessageBox.Show("HOLAAA");
 
 
                 //datos para el comprobante o carnet

@@ -98,6 +98,7 @@ namespace ClubDeportivoEquipo13.Forms
                     idGenerado = Convert.ToInt32(respuesta);
                 }
                 //validacion del ID generado
+
                 if (idGenerado <= 0)
                 {
                     MessageBox.Show("Error al registrar la inscripción: " + respuesta, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -111,6 +112,8 @@ namespace ClubDeportivoEquipo13.Forms
                 // Mostrar comprobante o carnet según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorId(IdPersona);
+
+                this.Hide();
 
                 //datos para el comprobante o carnet
                 string nombre = personaDatos.Rows[0]["nombre"].ToString();
