@@ -105,9 +105,9 @@ namespace ClubDeportivoEquipo13.Forms
                         FechaVencimiento = vencimientoCalc,
                         FormaPago = cboFormaPago.Text
                     };
-                    CuotasDatos cuo = new CuotasDatos();
-                    var rta = cuo.NuevaCuotaMensual(dni, cuotaMensual);
-                    MessageBox.Show(rta);
+                    CuotasDatos cuotasDatos = new CuotasDatos();
+                    var rta = cuotasDatos.NuevaCuotaMensual(dni, cuotaMensual);
+                    //MessageBox.Show("MENSUAL" + rta);
                     idGenerado = Convert.ToInt32(rta);
                 }
                 else if (rdoDiaria.Checked)
@@ -125,9 +125,9 @@ namespace ClubDeportivoEquipo13.Forms
                         IdActividad = actividadId.HasValue ? actividadId.Value : 0
                     };
                     CuotasDatos cuo = new CuotasDatos();
-                    var rta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
-                    MessageBox.Show(rta);
-                    idGenerado = Convert.ToInt32(rta);
+                    var respuesta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
+                    //MessageBox.Show("DIARIA" + respuesta);
+                    idGenerado = Convert.ToInt32(respuesta);
 
                 }
 

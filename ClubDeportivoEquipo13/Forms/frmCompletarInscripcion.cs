@@ -46,13 +46,6 @@ namespace ClubDeportivoEquipo13.Forms
             }
             
             ActividadDatos actividadDatos = new ActividadDatos();
-            
-
-            // Selecciona la propiedad "Valor" del objeto anónimo (por los enums)
-
-            /*var seleccionActividad = cboActividad.Text;
-            int seleccionHorario = (int)cboHorario.SelectedValue;
-            var actividadId = actividadDatos.BuscarActividadPorTipo(seleccionActividad, seleccionHorario);*/
            
             PersonasDatos datos = new PersonasDatos();
             string respuesta = "";
