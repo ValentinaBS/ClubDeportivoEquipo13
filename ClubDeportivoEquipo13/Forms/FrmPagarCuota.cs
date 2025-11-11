@@ -141,7 +141,50 @@ namespace ClubDeportivoEquipo13.Forms
                     MessageBox.Show("Cuota creada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
                 }
-                
+                MessageBox.Show("HOLA");
+                // Mostrar comprobante o carnet según corresponda
+                PersonasDatos pd = new PersonasDatos();
+                DataTable personaDatos = pd.BuscarPersonaPorDni(dni);
+                MessageBox.Show("HOLAAA");
+
+
+                //datos para el comprobante o carnet
+                string nombre = personaDatos.Rows[0]["nombre"].ToString();
+                string apellido = personaDatos.Rows[0]["apellido"].ToString();
+                string monto = txtMonto.Text;
+                string formaPago = cboFormaPago.Text;
+                string fechaPago = DateTime.Now.ToShortDateString();
+                string vencimiento = vencimientoCalc.ToShortDateString();
+                MessageBox.Show(nombre + " " + apellido + " " + monto);
+
+                //SOCIO -> CARNET + COMPROBANTE
+                if (rdoMensual.Checked)
+                {
+
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni,
+                        monto,
+                        formaPago,
+                        fechaPago,
+                        vencimiento
+                        );
+                    comprobante.ShowDialog();
+                }
+                else //NO SOCIO -> COMPROBANTE
+                {
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni,
+                        monto,
+                        formaPago,
+                        fechaPago
+                        );
+                    comprobante.ShowDialog();
+                }
+                this.Close();
 
             }
             catch

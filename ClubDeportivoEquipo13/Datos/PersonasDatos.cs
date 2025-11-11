@@ -151,7 +151,7 @@ namespace ClubDeportivoEquipo13.Datos
             using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
             {
                 cn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT idPersona FROM persona WHERE dni = @dni", cn);
+                MySqlCommand cmd = new MySqlCommand("SELECT nombre, apellido FROM persona WHERE dni = @dni", cn);
                 cmd.Parameters.AddWithValue("@dni", dni);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);
