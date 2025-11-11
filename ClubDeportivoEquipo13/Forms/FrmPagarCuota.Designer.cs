@@ -151,6 +151,7 @@
             this.btnRegistrarPago.TabIndex = 13;
             this.btnRegistrarPago.Text = "Registrar Pago";
             this.btnRegistrarPago.UseVisualStyleBackColor = true;
+            this.btnRegistrarPago.Click += new System.EventHandler(this.btnRegistrarPago_Click);
             // 
             // btnCancelar
             // 
@@ -185,6 +186,7 @@
             this.cboHorario.Name = "cboHorario";
             this.cboHorario.Size = new System.Drawing.Size(100, 21);
             this.cboHorario.TabIndex = 17;
+            this.cboHorario.SelectedIndexChanged += new System.EventHandler(this.cboHorario_SelectedIndexChanged);
             // 
             // grpNoSocios
             // 

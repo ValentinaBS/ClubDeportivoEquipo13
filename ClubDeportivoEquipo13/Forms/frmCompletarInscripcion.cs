@@ -27,15 +27,16 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void InitializeComboBox()
         {
-            // Enum - Forma de pago
-            AyudanteEnums.BindEnumToComboBox<Enums.TiposDePago>(cboFormaPago);
-            // Enum - Tipos de actividad
+            // Carga Enum - Forma de pago
+            AyudanteEnums.BindEnumToComboBox<TiposDePago>(cboFormaPago);
+            // Carga Enum - Tipos de actividad
             AyudanteEnums.BindEnumToComboBox<TiposDeActividades>(cboActividad);
 
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+          
             // le agrega 1 mes a la fecha de pago, indicando el vencimiento
             DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
             if (!rdoSocio.Checked && !rdoNoSocio.Checked)
@@ -43,15 +44,26 @@ namespace ClubDeportivoEquipo13.Forms
                 MessageBox.Show("Debe seleccionar tipo de inscripción.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
+            ActividadDatos actividadDatos = new ActividadDatos();
+            
 
+            // Selecciona la propiedad "Valor" del objeto anónimo (por los enums)
+
+            /*var seleccionActividad = cboActividad.Text;
+            int seleccionHorario = (int)cboHorario.SelectedValue;
+            var actividadId = actividadDatos.BuscarActividadPorTipo(seleccionActividad, seleccionHorario);*/
+           
             PersonasDatos datos = new PersonasDatos();
             string respuesta = "";
+            
 
             try
             {
                 int idGenerado = 0;
                 if (rdoSocio.Checked)
                 { 
+
                     // Crear objeto Socio con la primera cuota mensual
                     Socio socio = new Socio
                     {
@@ -72,6 +84,10 @@ namespace ClubDeportivoEquipo13.Forms
                 }
                 else if (rdoNoSocio.Checked)
                 {
+                    var seleccionActividad = cboActividad.Text;
+                    int seleccionHorario = (int)cboHorario.SelectedValue;
+                    var actividadId = actividadDatos.BuscarActividadPorTipo(seleccionActividad, seleccionHorario);
+
                     // Crear objeto NoSocio con la primera cuota diaria
                     NoSocio noSocio = new NoSocio
                     {
@@ -80,7 +96,8 @@ namespace ClubDeportivoEquipo13.Forms
                         {
                             Monto = Convert.ToDouble(txtMonto.Text),
                             FechaPago = DateTime.Now,
-                            FormaPago = cboFormaPago.Text
+                            FormaPago = cboFormaPago.Text,
+                            IdActividad = actividadId.HasValue ? actividadId.Value : 0  
                         }
                     };
 
@@ -216,18 +233,20 @@ namespace ClubDeportivoEquipo13.Forms
         }
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {   // Pone los velores del enum en las cajas
             // Verifica que no sea nulo
             if (cboActividad.SelectedItem is null) return;
 
             var seleccion = cboActividad.SelectedItem;
 
-            // Selecciona la propiedad "Valor" del objeto anóNIMO
+            // Selecciona la propiedad "Valor" del objeto anónimo (por los enums)
             var valorProperty = seleccion.GetType().GetProperty("Valor");
             var value = valorProperty.GetValue(seleccion, null);
 
             // Guarda el tipo de actividad seleccionada
             TiposDeActividades actividad = (TiposDeActividades)value;
+
+            
 
             if (actividad == TiposDeActividades.Musculacion)
             {
@@ -237,6 +256,11 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 AyudanteEnums.BindEnumToComboBox<HorarioAparatos>(cboHorario);
             }
+        }
+
+        private void cboHorario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

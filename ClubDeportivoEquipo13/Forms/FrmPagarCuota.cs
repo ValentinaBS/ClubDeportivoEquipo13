@@ -1,14 +1,19 @@
-﻿using ClubDeportivoEquipo13.Enums;
+﻿using ClubDeportivoEquipo13.Datos;
+using ClubDeportivoEquipo13.Dominio;
+using ClubDeportivoEquipo13.Entidades;
+using ClubDeportivoEquipo13.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClubDeportivoEquipo13.Forms
 {
@@ -76,10 +81,74 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnRegistrarPago_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDni.Text))
+           
+            // le agrega 1 mes a la fecha de pago, indicando el vencimiento
+            DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
+            if (!rdoMensual.Checked && !rdoDiaria.Checked)
             {
-                MessageBox.Show("Debe completar el campo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar el tipo de Cuota", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            CuotasDatos datos = new CuotasDatos();
+            var dni = txtDni.Text;
+            try
+            {
+                
+                int idGenerado = 0;
+                if (rdoMensual.Checked)
+                {
+                    CuotaMensual cuotaMensual = new CuotaMensual
+                    {
+                        Monto = Convert.ToDouble(txtMonto.Text),
+                        FechaPago = DateTime.Now,
+                        FechaVencimiento = vencimientoCalc,
+                        FormaPago = cboFormaPago.Text
+                    };
+                    CuotasDatos cuo = new CuotasDatos();
+                    var rta = cuo.NuevaCuotaMensual(dni, cuotaMensual);
+                    MessageBox.Show(rta);
+                    idGenerado = Convert.ToInt32(rta);
+                }
+                else if (rdoDiaria.Checked)
+                {
+                    ActividadDatos actividadDatos = new ActividadDatos();
+                    var seleccionActividad = cboActividad.Text;
+                    int seleccionHorario = (int)cboHorario.SelectedValue;
+                    var actividadId = actividadDatos.BuscarActividadPorTipo(seleccionActividad, seleccionHorario);
+
+                    CuotaDiaria cuotaDiaria = new CuotaDiaria
+                    {
+                        Monto = Convert.ToDouble(txtMonto.Text),
+                        FechaPago = DateTime.Now,
+                        FormaPago = cboFormaPago.Text,
+                        IdActividad = actividadId.HasValue ? actividadId.Value : 0
+                    };
+                    CuotasDatos cuo = new CuotasDatos();
+                    var rta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
+                    MessageBox.Show(rta);
+                    idGenerado = Convert.ToInt32(rta);
+
+                }
+
+                if (idGenerado <= 0)
+                {
+                    MessageBox.Show("Error al crear cuota: " + idGenerado, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Cuota creada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+                
+
+            }
+            catch
+            {
+                
+            }
+            
         }
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,6 +164,7 @@ namespace ClubDeportivoEquipo13.Forms
 
             // Guarda el tipo de actividad seleccionada
             TiposDeActividades actividad = (TiposDeActividades)value;
+            
 
             if (actividad == TiposDeActividades.Musculacion)
             {
@@ -104,6 +174,20 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 AyudanteEnums.BindEnumToComboBox<HorarioAparatos>(cboHorario);
             }
+
+
+        }
+
+        private void cboHorario_SelectedIndexChanged(object sender, EventArgs e)
+        { // Pruebas
+            /*
+            try
+            {
+                int hour = (int)cboHorario.SelectedValue;
+                var seleccionActividad = cboActividad.Text;
+                MessageBox.Show(seleccionActividad);
+            }
+            catch { } */
         }
     }
 }

@@ -193,7 +193,6 @@
             this.lblAsterisco1.Size = new System.Drawing.Size(100, 23);
             this.lblAsterisco1.TabIndex = 16;
             this.lblAsterisco1.Text = "*";
-            this.lblAsterisco1.Click += new System.EventHandler(this.lblAsterisco1_Click);
             // 
             // lblAsterisco2
             // 
@@ -214,7 +213,6 @@
             this.lblAsterisco.Size = new System.Drawing.Size(100, 23);
             this.lblAsterisco.TabIndex = 19;
             this.lblAsterisco.Text = "*";
-            this.lblAsterisco.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 

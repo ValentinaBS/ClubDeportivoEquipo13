@@ -50,7 +50,7 @@ namespace ClubDeportivoEquipo13.Enums
         [Description("4:00 PM")]
         Hora16 = 16,
 
-        [Description("18:00 PM")]
+        [Description("6:00 PM")]
         Hora18 = 18,
 
     }
