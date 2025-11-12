@@ -71,15 +71,5 @@ namespace ClubDeportivoEquipo13.Forms
             chkFicha.Checked = false;
             txtNombre.Focus();
         }
-
-        private void lblAsterisco1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

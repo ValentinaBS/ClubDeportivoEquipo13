@@ -111,42 +111,42 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(120, 50);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(200, 20);
+            this.txtNombre.Size = new System.Drawing.Size(200, 22);
             this.txtNombre.TabIndex = 6;
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(120, 80);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(200, 20);
+            this.txtApellido.Size = new System.Drawing.Size(200, 22);
             this.txtApellido.TabIndex = 7;
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(120, 110);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(200, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(200, 22);
             this.txtDocumento.TabIndex = 8;
             // 
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(120, 140);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(200, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(200, 22);
             this.txtTelefono.TabIndex = 9;
             // 
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(120, 170);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(200, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(200, 22);
             this.txtDireccion.TabIndex = 10;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(120, 200);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 20);
+            this.txtEmail.Size = new System.Drawing.Size(200, 22);
             this.txtEmail.TabIndex = 11;
             // 
             // chkFicha
@@ -193,7 +193,6 @@
             this.lblAsterisco1.Size = new System.Drawing.Size(100, 23);
             this.lblAsterisco1.TabIndex = 16;
             this.lblAsterisco1.Text = "*";
-            this.lblAsterisco1.Click += new System.EventHandler(this.lblAsterisco1_Click);
             // 
             // lblAsterisco2
             // 
@@ -214,7 +213,6 @@
             this.lblAsterisco.Size = new System.Drawing.Size(100, 23);
             this.lblAsterisco.TabIndex = 19;
             this.lblAsterisco.Text = "*";
-            this.lblAsterisco.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -270,6 +268,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnVolver);
             this.Name = "frmInscripcion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inscribir Persona";
             this.ResumeLayout(false);
             this.PerformLayout();

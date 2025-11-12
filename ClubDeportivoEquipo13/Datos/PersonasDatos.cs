@@ -76,9 +76,9 @@ namespace ClubDeportivoEquipo13.Datos
                     int idSocio = Convert.ToInt32(ParId.Value);
 
                     // Crear cuota mensual automáticamente
-                    socio.Cuota.IdSocio = idSocio;
-                    CuotasDatos cuo = new CuotasDatos();
-                    cuo.NuevaCuotaMensual(socio.Cuota);
+                    //socio.Cuota.IdSocio = idSocio;
+                    //CuotasDatos cuo = new CuotasDatos();
+                    //cuo.NuevaCuotaMensual(socio.Cuota);
 
                     salida = idSocio.ToString();
                 }
@@ -104,6 +104,7 @@ namespace ClubDeportivoEquipo13.Datos
                     cmd.Parameters.Add("p_idPersona", MySqlDbType.Int32).Value = noSocio.IdPersona;
                     cmd.Parameters.Add("p_Monto", MySqlDbType.Double).Value = noSocio.Cuota.Monto;
                     cmd.Parameters.Add("p_FormaPago", MySqlDbType.VarChar).Value = noSocio.Cuota.FormaPago;
+                    cmd.Parameters.Add("p_IdActividad", MySqlDbType.Int32).Value = noSocio.Cuota.IdActividad;
 
                     MySqlParameter ParId = new MySqlParameter("p_rta", MySqlDbType.Int32)
                     {
@@ -115,9 +116,9 @@ namespace ClubDeportivoEquipo13.Datos
                     int idNoSocio = Convert.ToInt32(ParId.Value);
 
                     // Crear cuota diaria automáticamente
-                    noSocio.Cuota.IdNoSocio = idNoSocio;
-                    CuotasDatos cuo = new CuotasDatos();
-                    cuo.NuevaCuotaDiaria(noSocio.Cuota);
+                    //noSocio.Cuota.IdNoSocio = idNoSocio;
+                   // CuotasDatos cuo = new CuotasDatos();
+                    //cuo.NuevaCuotaDiaria(noSocio.Cuota);
 
                     salida = idNoSocio.ToString();
                 }
@@ -141,6 +142,20 @@ namespace ClubDeportivoEquipo13.Datos
                 da.Fill(dt);
             }
 
+            return dt;
+        }
+
+        public DataTable BuscarPersonaPorDni(string dni)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
+            {
+                cn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT nombre, apellido FROM persona WHERE dni = @dni", cn);
+                cmd.Parameters.AddWithValue("@dni", dni);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
             return dt;
         }
 
@@ -180,6 +195,74 @@ namespace ClubDeportivoEquipo13.Datos
             }
             return dt;
         }
+
+        public bool EliminarUltimaPersona()
+        {
+            bool eliminado = false;
+
+            try
+            {
+                using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+                {
+                    sqlCon.Open();
+
+                    // Obtiene el ultimo id creado
+                    string queryId = "SELECT MAX(IdPersona) FROM Persona";
+                    MySqlCommand cmdGetId = new MySqlCommand(queryId, sqlCon);
+                    object result = cmdGetId.ExecuteScalar();
+
+                    if (result == DBNull.Value || result == null)
+                    {
+                        throw new Exception("No hay personas registradas para eliminar.");
+                    }
+
+                    int ultimoId = Convert.ToInt32(result);
+
+                    // Borra la persona con el último id
+                    string queryDelete = "DELETE FROM Persona WHERE IdPersona = @id";
+                    MySqlCommand cmdDelete = new MySqlCommand(queryDelete, sqlCon);
+                    cmdDelete.Parameters.AddWithValue("@id", ultimoId);
+
+                    int filas = cmdDelete.ExecuteNonQuery();
+
+                    if (filas > 0)
+                        eliminado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar persona: " + ex.Message);
+            }
+
+            return eliminado;
+        }
+
+        /*public string NuevaCuotaDiaria(NoSocio noSocio, CuotaDiaria cuota)
+        {
+            string salida;
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    sqlCon.Open();
+                    MySqlCommand cmd = new MySqlCommand("NuevaCuotaDiaria", sqlCon);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_persona", MySqlDbType.Int32).Value = noSocio.IdPersona;
+                    cmd.Parameters.Add("p_monto", MySqlDbType.Double).Value = cuota.Monto;
+                    cmd.Parameters.Add("p_fechaPago", MySqlDbType.Date).Value = cuota.FechaPago;
+                    cmd.Parameters.Add("p_formaPago", MySqlDbType.VarChar).Value = cuota.FormaPago;
+                    cmd.Parameters.Add("p_idActividad", MySqlDbType.Int32).Value = cuota.IdActividad;
+                    cmd.ExecuteNonQuery();
+                    salida = "1";
+                }
+                catch (Exception ex)
+                {
+                    salida = ex.Message;
+                }
+            }
+            return salida;
+        } */
+
 
     }
 }
