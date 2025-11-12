@@ -2,15 +2,8 @@
 {
     partial class frmVencimientos
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -43,17 +36,15 @@
             // lblTitulo
             // 
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(59, 11);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(45, 19);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(369, 36);
+            this.lblTitulo.Size = new System.Drawing.Size(266, 25);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "SOCIOS CON CUOTAS VENCIDAS";
             // 
             // dtpFechaDeConsulta
             // 
-            this.dtpFechaDeConsulta.Location = new System.Drawing.Point(167, 70);
-            this.dtpFechaDeConsulta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaDeConsulta.Location = new System.Drawing.Point(130, 57);
             this.dtpFechaDeConsulta.Name = "dtpFechaDeConsulta";
             this.dtpFechaDeConsulta.Size = new System.Drawing.Size(267, 22);
             this.dtpFechaDeConsulta.TabIndex = 9;
@@ -62,8 +53,7 @@
             // lblFechaDePago
             // 
             this.lblFechaDePago.AutoSize = true;
-            this.lblFechaDePago.Location = new System.Drawing.Point(27, 78);
-            this.lblFechaDePago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaDePago.Location = new System.Drawing.Point(25, 63);
             this.lblFechaDePago.Name = "lblFechaDePago";
             this.lblFechaDePago.Size = new System.Drawing.Size(122, 16);
             this.lblFechaDePago.TabIndex = 8;
@@ -71,13 +61,13 @@
             // 
             // btnGenerarListado
             // 
-            this.btnGenerarListado.Location = new System.Drawing.Point(31, 123);
-            this.btnGenerarListado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerarListado.Location = new System.Drawing.Point(111, 101);
             this.btnGenerarListado.Name = "btnGenerarListado";
             this.btnGenerarListado.Size = new System.Drawing.Size(179, 43);
             this.btnGenerarListado.TabIndex = 10;
             this.btnGenerarListado.Text = "Generar Listado";
             this.btnGenerarListado.UseVisualStyleBackColor = true;
+            this.btnGenerarListado.Click += new System.EventHandler(this.btnGenerarListado_Click);
             // 
             // dataGridView1
             // 
@@ -86,8 +76,7 @@
             this.Socio,
             this.IdSocio,
             this.FechaVencimiento});
-            this.dataGridView1.Location = new System.Drawing.Point(31, 198);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 161);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(404, 198);
@@ -116,8 +105,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(179, 421);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Location = new System.Drawing.Point(141, 342);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(100, 28);
             this.btnAceptar.TabIndex = 12;
