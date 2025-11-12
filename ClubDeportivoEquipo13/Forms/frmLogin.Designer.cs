@@ -34,7 +34,7 @@ namespace ClubDeportivoEquipo13.Forms
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.lblTitulo.Location = new System.Drawing.Point(70, 20);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(206, 26);
+            this.lblTitulo.Size = new System.Drawing.Size(255, 31);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "CLUB DEPORTIVO";
             // 
@@ -42,7 +42,7 @@ namespace ClubDeportivoEquipo13.Forms
             // 
             this.txtUsuario.Location = new System.Drawing.Point(50, 70);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(250, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(250, 22);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Text = "USUARIO";
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
@@ -51,7 +51,7 @@ namespace ClubDeportivoEquipo13.Forms
             // 
             this.txtPass.Location = new System.Drawing.Point(50, 110);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(250, 20);
+            this.txtPass.Size = new System.Drawing.Size(250, 22);
             this.txtPass.TabIndex = 2;
             this.txtPass.Text = "CONTRASEÑA";
             this.txtPass.Enter += new System.EventHandler(this.txtPass_Enter);
@@ -74,6 +74,7 @@ namespace ClubDeportivoEquipo13.Forms
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.btnIngresar);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

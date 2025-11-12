@@ -148,6 +148,7 @@
             this.Controls.Add(this.lblMonto);
             this.Controls.Add(this.lblFormaPago);
             this.Name = "frmCompletarInscripcion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Completar Inscripción";
             this.ResumeLayout(false);
             this.PerformLayout();
