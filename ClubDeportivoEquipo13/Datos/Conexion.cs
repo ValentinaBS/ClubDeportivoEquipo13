@@ -1,11 +1,18 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace ClubDeportivoEquipo13.Datos
 {
     public class Conexion
     {
         private static Conexion instancia = null;
+
+        public static string Database { get; set; } = "equipo13_coma";
+        public static string Server { get; set; } = "";
+        public static string Port { get; set; } = "";
+        public static string User { get; set; } = "";
+        public static string Clave { get; set; } = "";
 
         private Conexion() { }
 
@@ -15,14 +22,6 @@ namespace ClubDeportivoEquipo13.Datos
 
             try
             {
-                cadena.ConnectionString =
-                    "Server=localhost;" +
-                    "Database=equipo13_coma;" +
-                    "User Id=root;" +
-                    "Password=root;" +
-                    "Port=3306;";
-
-                return cadena;
             }
             catch (Exception ex)
             {
@@ -30,6 +29,13 @@ namespace ClubDeportivoEquipo13.Datos
             }
         }
 
+        public void Configurar(string server, string user , string clave, string port)
+        {
+            Server = server;
+            User = user;
+            Clave = clave;
+            Port = port;
+        }
         public static Conexion getInstancia()
         {
             if (instancia == null)
