@@ -15,13 +15,13 @@ namespace ClubDeportivoEquipo13.Datos
         public static string Clave { get; set; } = "";
 
         private Conexion() { }
-
         public MySqlConnection CrearConexion()
         {
-            MySqlConnection cadena = new MySqlConnection();
-
             try
             {
+                string ConnectionString =
+                    $"Server={Server};Database={Database};User Id= {User};Password={Clave};Port={Port};";
+                return new MySqlConnection(ConnectionString);
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ namespace ClubDeportivoEquipo13.Datos
             }
         }
 
-        public void Configurar(string server, string user , string clave, string port)
+        public void Configurar(string server, string user, string clave, string port)
         {
             Server = server;
             User = user;
