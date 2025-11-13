@@ -96,10 +96,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\ActividadDatos.cs" />
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\CuotasDatos.cs" />
     <Compile Include="Datos\PersonasDatos.cs" />
-    <Compile Include="Datos\Enumeraciones.cs" />
     <Compile Include="Datos\Usuarios.cs" />
     <Compile Include="Dominio\CuotaDiaria.cs" />
     <Compile Include="Dominio\CuotaMensual.cs" />

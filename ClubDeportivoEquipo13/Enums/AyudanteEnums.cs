@@ -20,6 +20,7 @@ namespace ClubDeportivoEquipo13.Enums
 
     public static void BindEnumToComboBox<TEnum>(ComboBox comboBox) where TEnum : Enum
         {
+            /*
             comboBox.DataSource = Enum.GetValues(typeof(TEnum))
                 .Cast<TEnum>()
                 .Select(v => new
@@ -28,6 +29,18 @@ namespace ClubDeportivoEquipo13.Enums
                     Descripcion = GetEnumDescription(v)
                 })
                 .ToList();
+
+            comboBox.DisplayMember = "Descripcion";
+            comboBox.ValueMember = "Valor";
+            */
+            comboBox.DataSource = Enum.GetValues(typeof(TEnum))
+    .Cast<TEnum>()
+    .Select(v => new
+    {
+        Valor = (int)(object)v,              // store INT, not enum
+        Descripcion = GetEnumDescription(v)  // text shown
+    })
+    .ToList();
 
             comboBox.DisplayMember = "Descripcion";
             comboBox.ValueMember = "Valor";

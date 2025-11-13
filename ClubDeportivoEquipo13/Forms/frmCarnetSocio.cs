@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +24,39 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Carnet Impreso", "Imprimir Carnet", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Carnet Impreso", "Imprimir Carnet", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                btnImprimir.Visible = false;
+                // Cerrar el formulario después de imprimir
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += (s, ev) =>
+                {
+                    Bitmap bmp = new Bitmap(this.Width, this.Height);
+                    this.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
+                    ev.Graphics.DrawImage(bmp, 0, 0);
+                    ev.HasMorePages = false;
+                    bmp.Dispose();
+                };
 
-            // Cerrar el formulario después de imprimir
-            this.Close();
+                pd.Print();
+
+                btnImprimir.Visible = true;
+
+                MessageBox.Show("Carnet impreso correctamente.", "Aviso del sistema",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                this.WindowState = FormWindowState.Normal;
+                this.BringToFront();
+                this.Activate();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            }
         }
     }
 }

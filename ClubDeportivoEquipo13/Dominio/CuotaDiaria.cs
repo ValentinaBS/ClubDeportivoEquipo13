@@ -13,5 +13,6 @@ namespace ClubDeportivoEquipo13.Dominio
         public double Monto { get; set; }
         public DateTime FechaPago { get; set; }
         public string FormaPago { get; set; }
+        public int IdActividad { get; set; }
     }
 }

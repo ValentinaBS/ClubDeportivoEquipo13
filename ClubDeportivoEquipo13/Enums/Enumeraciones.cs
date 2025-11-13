@@ -33,28 +33,50 @@ namespace ClubDeportivoEquipo13.Enums
         Aparatos
     }
 
-    enum HorarioActividades
+    enum HorarioMusculacion
     {
         [Description("8:00 AM")]
         Hora8 = 8,
 
-        [Description("9:00 AM")]
-        Hora9 = 9,
-
         [Description("10:00 AM")]
         Hora10 = 10,
-
-        [Description("11:00 AM")]
-        Hora11 = 11,
 
         [Description("12:00 PM")]
         Hora12 = 12,
 
+        [Description("2:00 PM")]
+        Hora14 = 14,
+
+        [Description("4:00 PM")]
+        Hora16 = 16,
+
+        [Description("6:00 PM")]
+        Hora18 = 18,
+
+    }
+
+    enum HorarioAparatos
+    {
+
+        [Description("9:00 AM")]
+        Hora9 = 9,
+
+        [Description("11:00 AM")]
+        Hora11 = 11,
+
         [Description("1:00 PM")]
         Hora13 = 13,
 
-        [Description("2:00 PM")]
-        Hora14 = 14
+        [Description("3:00 PM")]
+        Hora15 = 15,
+
+        [Description("5:00 PM")]
+        Hora17 = 17,
+
+        [Description("7:00 PM")]
+        Hora19 = 19,
+
     }
+
 
 }
