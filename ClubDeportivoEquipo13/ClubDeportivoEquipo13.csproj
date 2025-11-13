@@ -99,6 +99,12 @@
     <Compile Include="Datos\ActividadDatos.cs" />
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\CuotasDatos.cs" />
+    <Compile Include="Forms\frmConexionDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConexionDatos.Designer.cs">
+      <DependentUpon>frmConexionDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Datos\PersonasDatos.cs" />
     <Compile Include="Datos\Usuarios.cs" />
     <Compile Include="Dominio\CuotaDiaria.cs" />
