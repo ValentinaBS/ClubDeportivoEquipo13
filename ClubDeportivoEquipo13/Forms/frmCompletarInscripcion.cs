@@ -1,6 +1,7 @@
 ﻿using ClubDeportivoEquipo13.Datos;
-using ClubDeportivoEquipo13.Enums;
 using ClubDeportivoEquipo13.Dominio;
+using ClubDeportivoEquipo13.Enums;
+using ClubDeportivoEquipo13.Validaciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -257,6 +258,11 @@ namespace ClubDeportivoEquipo13.Forms
         private void cboHorario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloNumeros(e, txtMonto, toolTipMonto);
         }
     }
 }

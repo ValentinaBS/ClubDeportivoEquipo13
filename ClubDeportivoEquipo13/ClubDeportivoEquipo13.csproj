@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validaciones\AyudanteValidador.cs" />
     <EmbeddedResource Include="Forms\frmCarnetSocio.resx">
       <DependentUpon>frmCarnetSocio.cs</DependentUpon>
     </EmbeddedResource>

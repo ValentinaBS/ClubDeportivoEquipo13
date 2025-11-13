@@ -1,5 +1,6 @@
 ﻿using ClubDeportivoEquipo13.Datos;
 using ClubDeportivoEquipo13.Entidades;
+using ClubDeportivoEquipo13.Validaciones;
 using System;
 using System.Windows.Forms;
 
@@ -70,6 +71,32 @@ namespace ClubDeportivoEquipo13.Forms
             txtEmail.Clear();
             chkFicha.Checked = false;
             txtNombre.Focus();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+           // AyudanteValidador.EsEmailValido(txtEmail.Text);
+        }
+
+        // Validaciones básicas en tiempo real de campos (Solo números/letras)
+        private void txtDocumento_TextChanged(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloNumeros(e, txtDocumento, toolTipDocumento);
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloNumeros(e, txtTelefono, toolTipTelefono);
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloLetras(e, txtNombre, toolTipNombre);
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloLetras(e, txtApellido, toolTipApellido);
         }
     }
 }

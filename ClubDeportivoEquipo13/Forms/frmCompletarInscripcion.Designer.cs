@@ -7,7 +7,6 @@
         private System.Windows.Forms.RadioButton rdoSocio;
         private System.Windows.Forms.RadioButton rdoNoSocio;
         private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.ComboBox cboFormaPago;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnCancelar;
@@ -24,10 +23,10 @@
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.rdoSocio = new System.Windows.Forms.RadioButton();
             this.rdoNoSocio = new System.Windows.Forms.RadioButton();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.txtMonto = new System.Windows.Forms.TextBox();
             this.cboFormaPago = new System.Windows.Forms.ComboBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -40,6 +39,8 @@
             this.cboActividad = new System.Windows.Forms.ComboBox();
             this.lblActividadHorario = new System.Windows.Forms.Label();
             this.lblActividad = new System.Windows.Forms.Label();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.toolTipMonto = new System.Windows.Forms.ToolTip(this.components);
             this.grpNoSocios.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,13 +69,6 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(220, 20);
             this.dtpFecha.TabIndex = 2;
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Location = new System.Drawing.Point(30, 150);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(100, 20);
-            this.txtMonto.TabIndex = 4;
             // 
             // cboFormaPago
             // 
@@ -184,6 +178,14 @@
             this.lblActividad.TabIndex = 18;
             this.lblActividad.Text = "Actividad:";
             // 
+            // txtMonto
+            // 
+            this.txtMonto.Location = new System.Drawing.Point(30, 150);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(100, 20);
+            this.txtMonto.TabIndex = 4;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
+            // 
             // frmCompletarInscripcion
             // 
             this.ClientSize = new System.Drawing.Size(280, 302);
@@ -213,5 +215,7 @@
         private System.Windows.Forms.ComboBox cboActividad;
         private System.Windows.Forms.Label lblActividadHorario;
         private System.Windows.Forms.Label lblActividad;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.ToolTip toolTipMonto;
     }
 }

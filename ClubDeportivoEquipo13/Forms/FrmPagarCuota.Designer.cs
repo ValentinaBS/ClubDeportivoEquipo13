@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblPagarCuota = new System.Windows.Forms.Label();
             this.lblDni = new System.Windows.Forms.Label();
             this.lblTipoDeCuota = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@
             this.cboActividad = new System.Windows.Forms.ComboBox();
             this.lblActividadHorario = new System.Windows.Forms.Label();
             this.lblActividad = new System.Windows.Forms.Label();
+            this.toolTipDni = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipMonto = new System.Windows.Forms.ToolTip(this.components);
             this.grpNoSocios.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +136,7 @@
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(121, 20);
             this.txtMonto.TabIndex = 9;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // lblFormaDePago
             // 
@@ -178,6 +182,7 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(122, 20);
             this.txtDni.TabIndex = 16;
+            this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_TextChanged);
             // 
             // cboHorario
             // 
@@ -278,5 +283,7 @@
         private System.Windows.Forms.ComboBox cboActividad;
         private System.Windows.Forms.Label lblActividad;
         private System.Windows.Forms.Label lblActividadHorario;
+        private System.Windows.Forms.ToolTip toolTipDni;
+        private System.Windows.Forms.ToolTip toolTipMonto;
     }
 }

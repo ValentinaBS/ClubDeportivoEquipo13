@@ -2,6 +2,7 @@
 using ClubDeportivoEquipo13.Dominio;
 using ClubDeportivoEquipo13.Entidades;
 using ClubDeportivoEquipo13.Enums;
+using ClubDeportivoEquipo13.Validaciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,20 +82,66 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnRegistrarPago_Click(object sender, EventArgs e)
         {
-           
-            // le agrega 1 mes a la fecha de pago, indicando el vencimiento
-            DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
             if (!rdoMensual.Checked && !rdoDiaria.Checked)
             {
                 MessageBox.Show("Debe seleccionar el tipo de Cuota", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(txtDni.Text))
+            {
+                MessageBox.Show("El DNI es requerido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDni.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtMonto.Text))
+            {
+                MessageBox.Show("El monto es requerido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMonto.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cboFormaPago.Text))
+            {
+                MessageBox.Show("La forma de pago es requerida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboFormaPago.Focus();
+                return;
+            }
+
+            if (!rdoMensual.Checked && !rdoDiaria.Checked)
+            {
+                MessageBox.Show("Debe seleccionar el tipo de Cuota", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Additional validation for Diaria
+            if (rdoDiaria.Checked)
+            {
+                if (string.IsNullOrWhiteSpace(cboActividad.Text))
+                {
+                    MessageBox.Show("La actividad es requerida para cuota diaria", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cboActividad.Focus();
+                    return;
+                }
+
+                if (cboHorario.SelectedValue == null)
+                {
+                    MessageBox.Show("El horario es requerido para cuota diaria", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cboHorario.Focus();
+                    return;
+                }
+            }
+            // le agrega 1 mes a la fecha de pago, indicando el vencimiento
+            DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
+            
+
+
             CuotasDatos datos = new CuotasDatos();
             var dni = txtDni.Text;
+
             try
             {
-                
                 int idGenerado = 0;
                 if (rdoMensual.Checked)
                 {
@@ -107,8 +154,22 @@ namespace ClubDeportivoEquipo13.Forms
                     };
                     CuotasDatos cuotasDatos = new CuotasDatos();
                     var rta = cuotasDatos.NuevaCuotaMensual(dni, cuotaMensual);
-                    //MessageBox.Show("MENSUAL" + rta);
                     idGenerado = Convert.ToInt32(rta);
+                    if (idGenerado == -1)
+                    {
+                        MessageBox.Show("Error al crear cuota: La persona es No-Socio (Cuota Diaria)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    }
+                    else if (idGenerado == 0)
+                    {
+                        MessageBox.Show("Error al crear cuota: La Persona no está registrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cuota Mensual creada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 else if (rdoDiaria.Checked)
                 {
@@ -128,22 +189,25 @@ namespace ClubDeportivoEquipo13.Forms
                     var respuesta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
                     //MessageBox.Show("DIARIA" + respuesta);
                     idGenerado = Convert.ToInt32(respuesta);
+                    if (idGenerado == -1)
+                    {
+                        MessageBox.Show("Error al crear cuota: La persona es Socio/a (Cuota Mensual)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    }
+                    else if (idGenerado == 0)
+                    {
+                        MessageBox.Show("Error al crear cuota: La Persona no está registrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cuota Diaria creada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
 
                 }
 
-                if (idGenerado == -1)
-                {
-                    MessageBox.Show("Error al crear cuota: El tipo de cuota es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-
-                } else if (idGenerado == 0) {
-                    MessageBox.Show("Error al crear cuota: La Persona no está registrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show("Cuota creada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
+               
                 // Mostrar comprobante o carnet según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorDni(dni);
@@ -156,7 +220,6 @@ namespace ClubDeportivoEquipo13.Forms
                 string formaPago = cboFormaPago.Text;
                 string fechaPago = DateTime.Now.ToShortDateString();
                 string vencimiento = vencimientoCalc.ToShortDateString();
-                MessageBox.Show(nombre + " " + apellido + " " + monto);
 
                 //SOCIO -> CARNET + COMPROBANTE
                 if (rdoMensual.Checked)
@@ -223,15 +286,19 @@ namespace ClubDeportivoEquipo13.Forms
         }
 
         private void cboHorario_SelectedIndexChanged(object sender, EventArgs e)
-        { // Pruebas
-            /*
-            try
-            {
-                int hour = (int)cboHorario.SelectedValue;
-                var seleccionActividad = cboActividad.Text;
-                MessageBox.Show(seleccionActividad);
-            }
-            catch { } */
+        { 
         }
+
+        private void txtDni_TextChanged(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloNumeros(e, txtDni, toolTipDni);
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.PermitirSoloNumeros(e, txtMonto, toolTipMonto);
+        }
+
+       
     }
 }

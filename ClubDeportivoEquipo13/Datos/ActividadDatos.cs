@@ -34,8 +34,6 @@ namespace ClubDeportivoEquipo13.Datos
                              WHERE horario = @hora
                              AND nombreActividad = @nombreActividad;";
 
-                    MessageBox.Show("Horario buscado: " + hora.ToString() + "\nTipo de actividad: " + tipoActividad);
-
                     MySqlCommand cmd = new MySqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@hora", hora);
                     cmd.Parameters.AddWithValue("@nombreActividad", tipoActividad);
@@ -44,7 +42,6 @@ namespace ClubDeportivoEquipo13.Datos
 
                     if (reader.Read())
                     {
-                        MessageBox.Show("Actividad encontrada. ID: " + reader.GetInt32("idActividad"));
                         return reader.GetInt32("idActividad");
                     }
                     else

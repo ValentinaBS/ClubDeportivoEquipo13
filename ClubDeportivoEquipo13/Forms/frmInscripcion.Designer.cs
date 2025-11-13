@@ -35,6 +35,7 @@
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblDocumento = new System.Windows.Forms.Label();
@@ -57,6 +58,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblAsterisco3 = new System.Windows.Forms.Label();
+            this.toolTipDocumento = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipTelefono = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipNombre = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipApellido = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // lblNombre
@@ -111,43 +116,48 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(120, 50);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(200, 22);
+            this.txtNombre.Size = new System.Drawing.Size(200, 20);
             this.txtNombre.TabIndex = 6;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(120, 80);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(200, 22);
+            this.txtApellido.Size = new System.Drawing.Size(200, 20);
             this.txtApellido.TabIndex = 7;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(120, 110);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(200, 22);
+            this.txtDocumento.Size = new System.Drawing.Size(200, 20);
             this.txtDocumento.TabIndex = 8;
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_TextChanged);
             // 
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(120, 140);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(200, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(200, 20);
             this.txtTelefono.TabIndex = 9;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(120, 170);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(200, 22);
+            this.txtDireccion.Size = new System.Drawing.Size(200, 20);
             this.txtDireccion.TabIndex = 10;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(120, 200);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 22);
+            this.txtEmail.Size = new System.Drawing.Size(200, 20);
             this.txtEmail.TabIndex = 11;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // chkFicha
             // 
@@ -281,5 +291,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblAsterisco3;
+        private System.Windows.Forms.ToolTip toolTipDocumento;
+        private System.Windows.Forms.ToolTip toolTipTelefono;
+        private System.Windows.Forms.ToolTip toolTipNombre;
+        private System.Windows.Forms.ToolTip toolTipApellido;
     }
 }
