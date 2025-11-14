@@ -254,6 +254,7 @@
             this.Controls.Add(this.lblPagarCuota);
             this.Controls.Add(this.grpNoSocios);
             this.Name = "frmPagarCuota";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagar Cuota";
             this.Load += new System.EventHandler(this.FrmPagarCuota_Load);
             this.grpNoSocios.ResumeLayout(false);

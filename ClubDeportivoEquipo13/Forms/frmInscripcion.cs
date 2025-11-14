@@ -126,28 +126,42 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-           // AyudanteValidador.EsEmailValido(txtEmail.Text);
         }
 
         // Validaciones básicas en tiempo real de campos (Solo números/letras)
+        // Máximo de caracteres mediante ToolTips
         private void txtDocumento_TextChanged(object sender, KeyPressEventArgs e)
         {
             AyudanteValidador.PermitirSoloNumeros(e, txtDocumento, toolTipDocumento);
+            AyudanteValidador.LimiteDeCaracteres(e, txtDocumento, toolTipDocumento, 8);
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             AyudanteValidador.PermitirSoloNumeros(e, txtTelefono, toolTipTelefono);
+            AyudanteValidador.LimiteDeCaracteres(e, txtTelefono, toolTipTelefono, 10);
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             AyudanteValidador.PermitirSoloLetras(e, txtNombre, toolTipNombre);
+            AyudanteValidador.LimiteDeCaracteres(e, txtNombre, toolTipNombre);
         }
 
         private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
             AyudanteValidador.PermitirSoloLetras(e, txtApellido, toolTipApellido);
+            AyudanteValidador.LimiteDeCaracteres(e, txtApellido, toolTipApellido);
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.LimiteDeCaracteres(e, txtEmail, toolTipEmail, 100);
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AyudanteValidador.LimiteDeCaracteres(e, txtDireccion, toolTipDireccion, 100);
         }
     }
 }

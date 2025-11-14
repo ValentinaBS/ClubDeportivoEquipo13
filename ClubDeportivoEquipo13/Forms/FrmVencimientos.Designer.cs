@@ -118,6 +118,7 @@
             this.Controls.Add(this.lblFechaDePago);
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmVencimientos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de Vencimientos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

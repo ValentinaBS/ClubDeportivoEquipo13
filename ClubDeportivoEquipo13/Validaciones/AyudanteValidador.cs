@@ -45,6 +45,27 @@ namespace ClubDeportivoEquipo13.Validaciones
             }
         }
 
+        public static void LimiteDeCaracteres(KeyPressEventArgs e, TextBox textBox, ToolTip toolTip = null, int numeroMaximo = 50)
+        {
+            // Permitir teclas de control (backspace, delete, etc.)
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            // Si ya alcanzó el máximo de caracteres, bloquear nueva escritura
+            if (textBox.Text.Length >= numeroMaximo)
+            {
+                e.Handled = true;
+                System.Media.SystemSounds.Beep.Play();
+
+                if (toolTip != null)
+                {
+                    toolTip.Show($"Máximo {numeroMaximo} caracteres permitidos", textBox, 1000);
+                }
+            }
+        }
+
+
+
         public static string ValidarNombre(string input)
         {
 

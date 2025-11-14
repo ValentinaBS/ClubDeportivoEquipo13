@@ -62,6 +62,8 @@
             this.toolTipTelefono = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipNombre = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipApellido = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipEmail = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipDireccion = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // lblNombre
@@ -150,6 +152,7 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(200, 20);
             this.txtDireccion.TabIndex = 10;
+            this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccion_KeyPress);
             // 
             // txtEmail
             // 
@@ -157,7 +160,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 20);
             this.txtEmail.TabIndex = 11;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // chkFicha
             // 
@@ -295,5 +298,7 @@
         private System.Windows.Forms.ToolTip toolTipTelefono;
         private System.Windows.Forms.ToolTip toolTipNombre;
         private System.Windows.Forms.ToolTip toolTipApellido;
+        private System.Windows.Forms.ToolTip toolTipEmail;
+        private System.Windows.Forms.ToolTip toolTipDireccion;
     }
 }

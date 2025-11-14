@@ -45,6 +45,13 @@ namespace ClubDeportivoEquipo13.Forms
                 MessageBox.Show("Debe seleccionar tipo de inscripción.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if(cboFormaPago.Text == "")
+            {
+                MessageBox.Show("Debe seleccionar una forma de pago.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             
             ActividadDatos actividadDatos = new ActividadDatos();
            
