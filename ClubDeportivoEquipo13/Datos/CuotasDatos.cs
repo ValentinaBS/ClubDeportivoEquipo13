@@ -107,7 +107,7 @@ namespace ClubDeportivoEquipo13.Datos
             }
         } */
 
-        public int ConsultarVencimientoSocio(string dni, DateTime fechaCuota)
+        public (int resultado, DateTime fecha) ConsultarVencimientoSocio(string dni, DateTime fechaCuota)
         {
             using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
             {
@@ -123,14 +123,14 @@ namespace ClubDeportivoEquipo13.Datos
                     DateTime fechaVencimiento = Convert.ToDateTime(resultado).Date;
                     if (fechaCuota > fechaVencimiento)
                     {
-                        return 1; // La ultima cuota está vencida, puede pagar
+                        return (1, fechaVencimiento); // La ultima cuota está vencida, puede pagar
                     }
                     else
                     {
-                        return 0; // La ultima cuota no está vencida, no puede pagar
+                        return (0, fechaVencimiento); // La ultima cuota no está vencida, no puede pagar
                     }
                 }
-                return -1; // Error en el sistema.
+                return (-1, fechaCuota); // Error en el sistema.
             }
         }
 

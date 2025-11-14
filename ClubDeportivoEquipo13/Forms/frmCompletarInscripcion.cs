@@ -96,7 +96,7 @@ namespace ClubDeportivoEquipo13.Forms
                         Cuota = new CuotaDiaria
                         {
                             Monto = Convert.ToDouble(txtMonto.Text),
-                            FechaPago = DateTime.Now,
+                            FechaPago = dtpFecha.Value,
                             FormaPago = cboFormaPago.Text,
                             IdActividad = actividadId.HasValue ? actividadId.Value : 0  
                         }
@@ -242,7 +242,7 @@ namespace ClubDeportivoEquipo13.Forms
             // Buscador de fecha, fecha minima del día de hoy
             dtpFecha.MinDate = DateTime.Now;
             // Fecha máxima, último día del mes actual
-            dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+            //dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
         }
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)

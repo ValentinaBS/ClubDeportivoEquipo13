@@ -139,7 +139,7 @@ namespace ClubDeportivoEquipo13.Forms
             var dni = txtDni.Text;
             //Consulta si la fecha electa no tiene una cuota vigente
 
-            int tieneVencida = datos.ConsultarVencimientoSocio(dni, dtpFecha.Value.Date);
+            var tieneVencida = datos.ConsultarVencimientoSocio(dni, dtpFecha.Value.Date);
 
 
             try
@@ -148,9 +148,10 @@ namespace ClubDeportivoEquipo13.Forms
 
                 if (rdoMensual.Checked)
                 {
-                    if (tieneVencida == 0)
+                    if (tieneVencida.resultado == 0)
                     {
-                        MessageBox.Show("Error al crear cuota: La última cuota aún está vigente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al crear cuota: La última cuota aún está vigente hasta: "
+                            + tieneVencida.fecha.Date, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     
