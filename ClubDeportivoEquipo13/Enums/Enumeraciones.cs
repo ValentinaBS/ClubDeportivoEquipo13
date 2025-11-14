@@ -11,16 +11,16 @@ namespace ClubDeportivoEquipo13.Enums
     enum TiposDePago
     {
         [Description("Efectivo")]
-        Efectivo,
+        Efectivo = 1,
 
         [Description("Tarjeta de Crédito")]
-        Tarjeta,
+        Tarjeta = 1,
 
         [Description("Tarjeta 3 Cuotas S/I")]
-        Tarjeta3Cuotas,
+        Tarjeta3Cuotas = 3,
 
         [Description("Tarjeta 6 Cuotas S/I")]
-        Tarjeta6Cuotas
+        Tarjeta6Cuotas = 6
 
     }
 

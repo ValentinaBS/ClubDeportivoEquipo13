@@ -64,8 +64,6 @@ namespace ClubDeportivoEquipo13.Validaciones
             }
         }
 
-
-
         public static string ValidarNombre(string input)
         {
 

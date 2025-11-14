@@ -3,14 +3,7 @@ using ClubDeportivoEquipo13.Dominio;
 using ClubDeportivoEquipo13.Enums;
 using ClubDeportivoEquipo13.Validaciones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClubDeportivoEquipo13.Forms
@@ -144,16 +137,33 @@ namespace ClubDeportivoEquipo13.Forms
                         );
                     carnet.ShowDialog();
 
-                    frmComprobantePago comprobante = new frmComprobantePago(
-                        nombre,
-                        apellido,
-                        dni,
-                        monto,
-                        formaPago,
-                        fechaPago,
-                        vencimiento
+                    // Toma el valor numerico del enum de Forma de pago, para detectar cuotas
+                    var seleccionPago = cboFormaPago.SelectedItem;
+                    var valorProperty = seleccionPago.GetType().GetProperty("Valor");
+
+                    int seleccionCuotas = (int)cboFormaPago.SelectedValue;
+
+                    // Convierte el monto de string a double y toma dos decimales
+                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0);
+                    // Divide el monto por la cantidad de cuotas y lo devuelve en string
+                    string montoDividido = (montoDouble / seleccionCuotas).ToString();
+
+                    for (int i = 0; i < seleccionCuotas; i++)
+                    {
+                        frmComprobantePago comprobante = new frmComprobantePago(
+                            nombre,
+                            apellido,
+                            dni,
+                            montoDividido,
+                            formaPago,
+                            fechaPago,
+                            vencimiento,
+                            i + 1, // Cuota actual +1, empieza de 0
+                            seleccionCuotas
                         );
-                    comprobante.ShowDialog();
+                        comprobante.ShowDialog();
+                    }
+
                 }
                 else //NO SOCIO -> COMPROBANTE
                 {
@@ -246,7 +256,7 @@ namespace ClubDeportivoEquipo13.Forms
         }
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
-        {   // Pone los velores del enum en las cajas
+        {   // Pone los valores del enum en las cajas
             // Verifica que no sea nulo
             if (cboActividad.SelectedItem is null) return;
 

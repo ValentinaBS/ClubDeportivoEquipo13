@@ -175,6 +175,9 @@
     <EmbeddedResource Include="Forms\frmComprobantePago.resx">
       <DependentUpon>frmComprobantePago.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConexionDatos.resx">
+      <DependentUpon>frmConexionDatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInscripcion.resx">
       <DependentUpon>frmInscripcion.cs</DependentUpon>
     </EmbeddedResource>

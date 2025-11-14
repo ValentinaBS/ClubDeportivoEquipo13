@@ -183,6 +183,7 @@ namespace ClubDeportivoEquipo13.Forms
                 else if (rdoDiaria.Checked)
                 {
                     ActividadDatos actividadDatos = new ActividadDatos();
+                    // Toma los datos del los enums del combobox actividad y horario
                     var seleccionActividad = cboActividad.Text;
                     int seleccionHorario = (int)cboHorario.SelectedValue;
                     var actividadId = actividadDatos.BuscarActividadPorTipo(seleccionActividad, seleccionHorario);
@@ -228,20 +229,35 @@ namespace ClubDeportivoEquipo13.Forms
                 string fechaPago = dtpFecha.Value.ToShortDateString();
                 string vencimiento = vencimientoCalc.ToShortDateString();
 
-                //SOCIO -> CARNET + COMPROBANTE
+                //SOCIO -> COMPROBANTE/S
                 if (rdoMensual.Checked)
                 {
+                    // Toma el valor numerico del enum de Forma de pago, para detectar cuotas
+                    var seleccionPago = cboFormaPago.SelectedItem;
+                    var valorProperty = seleccionPago.GetType().GetProperty("Valor");
 
-                    frmComprobantePago comprobante = new frmComprobantePago(
-                        nombre,
-                        apellido,
-                        dni,
-                        monto,
-                        formaPago,
-                        fechaPago,
-                        vencimiento
+                    int seleccionCuotas = (int)cboFormaPago.SelectedValue;
+
+                    // Convierte el monto de string a double y toma dos decimales
+                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0);
+                    // Divide el monto por la cantidad de cuotas y lo devuelve en string
+                    string montoDividido = (montoDouble / seleccionCuotas).ToString();
+
+                    for (int i = 0; i < seleccionCuotas; i++)
+                    {
+                        frmComprobantePago comprobante = new frmComprobantePago(
+                            nombre,
+                            apellido,
+                            dni,
+                            montoDividido,
+                            formaPago,
+                            fechaPago,
+                            vencimiento,
+                            i + 1, // Cuota actual +1, empieza de 0
+                            seleccionCuotas
                         );
-                    comprobante.ShowDialog();
+                        comprobante.ShowDialog();
+                    }
                 }
                 else //NO SOCIO -> COMPROBANTE
                 {
@@ -281,6 +297,7 @@ namespace ClubDeportivoEquipo13.Forms
 
             if (actividad == TiposDeActividades.Musculacion)
             {
+                // Carga los combobox con los horarios según la actividad seleccionada
                 AyudanteEnums.BindEnumToComboBox<HorarioMusculacion>(cboHorario);
             }
             else if (actividad == TiposDeActividades.Aparatos)
