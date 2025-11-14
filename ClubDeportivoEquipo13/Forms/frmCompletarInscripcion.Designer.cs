@@ -77,7 +77,6 @@
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(100, 21);
             this.cboFormaPago.TabIndex = 5;
-            this.cboFormaPago.SelectedIndexChanged += new System.EventHandler(this.cboFormaPago_SelectedIndexChanged);
             // 
             // btnRegistrar
             // 

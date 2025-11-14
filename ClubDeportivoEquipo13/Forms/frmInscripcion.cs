@@ -30,15 +30,66 @@ namespace ClubDeportivoEquipo13.Forms
                 return;
             }
 
+            string nombreValidado = AyudanteValidador.ValidarNombre(txtNombre.Text);
+            string apellidoValidado = AyudanteValidador.ValidarNombre(txtApellido.Text);
+            bool documentoValidado = AyudanteValidador.ValidarDocumento(txtDocumento.Text);
+
+            if (nombreValidado == "")
+            {
+                MessageBox.Show("El nombre debe tener mas de dos caracteres válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (apellidoValidado == "")
+            {
+                MessageBox.Show("El Apellido debe tener mas de dos caracteres válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!documentoValidado)
+            {
+                MessageBox.Show("El Documento debe tener 8 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string emailValidado = "";
+            if (txtEmail.Text != "")
+            {
+                emailValidado = AyudanteValidador.ValidarEmail(txtEmail.Text);
+                if (emailValidado == "")
+                {
+                    MessageBox.Show("El Email no es válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            string telefonoValidado = "";
+            if (txtTelefono.Text != "")
+            {
+                telefonoValidado = AyudanteValidador.ValidarTelefono(txtTelefono.Text);
+                if (telefonoValidado == "")
+                {
+                    MessageBox.Show("El Teléfono debe tener entre 8 y 10 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            string direccionValidada = "";
+            if (txtDireccion.Text != "")
+            {
+                direccionValidada = AyudanteValidador.ValidarDireccion(txtDireccion.Text);
+                if (direccionValidada == "")
+                {
+                    MessageBox.Show("La Dirección debe tener al menos 5 caracteres válidos, máximo 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+
             // Crear objeto E_Persona
             E_Persona persona = new E_Persona
             {
-                Nombre = txtNombre.Text,
-                Apellido = txtApellido.Text,
+                Nombre = nombreValidado,
+                Apellido = apellidoValidado,
                 Dni = txtDocumento.Text,
-                Telefono = txtTelefono.Text,
-                Direccion = txtDireccion.Text,
-                Email = txtEmail.Text,
+                Telefono = telefonoValidado,
+                Direccion = direccionValidada,
+                Email = emailValidado,
                 FichaMedica = chkFicha.Checked
             };
 

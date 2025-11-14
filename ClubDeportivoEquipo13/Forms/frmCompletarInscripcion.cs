@@ -202,11 +202,6 @@ namespace ClubDeportivoEquipo13.Forms
             AyudanteEnums.BindFilteredTiposDePago(cboFormaPago, hideCuotas: false);
         }
 
-        private void cboFormaPago_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void rdoNoSocio_CheckedChanged(object sender, EventArgs e)
         {
             //Habilita elección de Actividad y Horario
