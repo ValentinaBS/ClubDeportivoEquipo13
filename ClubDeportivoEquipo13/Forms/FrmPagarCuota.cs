@@ -115,7 +115,6 @@ namespace ClubDeportivoEquipo13.Forms
                 return;
             }
 
-            // Additional validation for Diaria
             if (rdoDiaria.Checked)
             {
                 if (string.IsNullOrWhiteSpace(cboActividad.Text))
@@ -139,8 +138,8 @@ namespace ClubDeportivoEquipo13.Forms
             var dni = txtDni.Text;
             //Consulta si la fecha electa no tiene una cuota vigente
 
+            // 
             var tieneVencida = datos.ConsultarVencimientoSocio(dni, dtpFecha.Value.Date);
-
 
             try
             {

@@ -30,6 +30,7 @@
             this.IdSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.cboSoloDia = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,11 +107,22 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // cboSoloDia
+            // 
+            this.cboSoloDia.AutoSize = true;
+            this.cboSoloDia.Location = new System.Drawing.Point(95, 142);
+            this.cboSoloDia.Name = "cboSoloDia";
+            this.cboSoloDia.Size = new System.Drawing.Size(166, 17);
+            this.cboSoloDia.TabIndex = 13;
+            this.cboSoloDia.Text = "Solo vencimientos de ese día";
+            this.cboSoloDia.UseVisualStyleBackColor = true;
+            // 
             // frmVencimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(357, 377);
+            this.Controls.Add(this.cboSoloDia);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnGenerarListado);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdSocio;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.CheckBox cboSoloDia;
     }
 }

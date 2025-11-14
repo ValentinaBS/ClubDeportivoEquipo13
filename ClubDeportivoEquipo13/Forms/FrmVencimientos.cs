@@ -39,14 +39,29 @@ namespace ClubDeportivoEquipo13.Forms
 
             try
             {
-                DataTable dtVencidos = _personasDatos.ListarSociosVencidos(fechaConsulta);
-
-                dataGridView1.DataSource = dtVencidos;
-
-                if (dtVencidos.Rows.Count == 0)
+                if (cboSoloDia.Checked)
                 {
-                    MessageBox.Show("No se encontraron socios con cuotas vencidas a esta fecha.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DataTable dtVencidosEseDia = _personasDatos.ListarSociosVencidosEseDia(fechaConsulta);
+                    dataGridView1.DataSource = dtVencidosEseDia;
+
+                    if (dtVencidosEseDia.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron socios con cuotas vencidas en esta fecha.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                } else
+                {
+                    DataTable dtVencidos = _personasDatos.ListarSociosVencidos(fechaConsulta);
+
+                    dataGridView1.DataSource = dtVencidos;
+
+                    if (dtVencidos.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron socios con cuotas vencidas a esta fecha.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+
+                
             }
             catch (Exception ex)
             {

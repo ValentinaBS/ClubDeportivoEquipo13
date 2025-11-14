@@ -196,6 +196,43 @@ namespace ClubDeportivoEquipo13.Datos
             return dt;
         }
 
+        public DataTable ListarSociosVencidosEseDia(DateTime fechaConsulta)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
+                {
+                    cn.Open();
+
+                    // Filtra donde la fecha de vencimiento sea EXACTAMENTE EL MISMO DÍA que la fecha de consulta
+                    string query = @"
+            SELECT 
+                CONCAT(p.nombre, ' ', p.apellido) AS Socio, 
+                s.idSocio AS IdSocio, 
+                s.fechaVencimiento AS FechaVencimiento
+            FROM 
+                socio s
+            JOIN 
+                persona p ON s.idPersona = p.idPersona
+            WHERE 
+                DATE(s.fechaVencimiento) = DATE(@fechaConsulta)";
+
+                    MySqlCommand cmd = new MySqlCommand(query, cn);
+
+                    cmd.Parameters.AddWithValue("@fechaConsulta", fechaConsulta.Date);
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar socios vencidos: " + ex.Message);
+            }
+            return dt;
+        }
+
         public bool EliminarUltimaPersona()
         {
             bool eliminado = false;
