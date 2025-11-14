@@ -69,6 +69,7 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(220, 20);
             this.dtpFecha.TabIndex = 2;
+            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // cboFormaPago
             // 
@@ -80,7 +81,7 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(30, 260);
+            this.btnRegistrar.Location = new System.Drawing.Point(150, 260);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(100, 30);
             this.btnRegistrar.TabIndex = 6;
@@ -89,7 +90,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(150, 260);
+            this.btnCancelar.Location = new System.Drawing.Point(30, 260);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 30);
             this.btnCancelar.TabIndex = 7;
@@ -98,7 +99,7 @@
             // 
             // lblTipoInscripcion
             // 
-            this.lblTipoInscripcion.Location = new System.Drawing.Point(30, 10);
+            this.lblTipoInscripcion.Location = new System.Drawing.Point(33, 10);
             this.lblTipoInscripcion.Name = "lblTipoInscripcion";
             this.lblTipoInscripcion.Size = new System.Drawing.Size(150, 20);
             this.lblTipoInscripcion.TabIndex = 8;

@@ -237,32 +237,8 @@ namespace ClubDeportivoEquipo13.Datos
             return eliminado;
         }
 
-        /*public string NuevaCuotaDiaria(NoSocio noSocio, CuotaDiaria cuota)
-        {
-            string salida;
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
-            {
-                try
-                {
-                    sqlCon.Open();
-                    MySqlCommand cmd = new MySqlCommand("NuevaCuotaDiaria", sqlCon);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_persona", MySqlDbType.Int32).Value = noSocio.IdPersona;
-                    cmd.Parameters.Add("p_monto", MySqlDbType.Double).Value = cuota.Monto;
-                    cmd.Parameters.Add("p_fechaPago", MySqlDbType.Date).Value = cuota.FechaPago;
-                    cmd.Parameters.Add("p_formaPago", MySqlDbType.VarChar).Value = cuota.FormaPago;
-                    cmd.Parameters.Add("p_idActividad", MySqlDbType.Int32).Value = cuota.IdActividad;
-                    cmd.ExecuteNonQuery();
-                    salida = "1";
-                }
-                catch (Exception ex)
-                {
-                    salida = ex.Message;
-                }
-            }
-            return salida;
-        } */
-
+        
+       
 
     }
 }

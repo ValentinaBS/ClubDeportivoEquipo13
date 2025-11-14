@@ -3,6 +3,7 @@ using ClubDeportivoEquipo13.Dominio;
 using ClubDeportivoEquipo13.Entidades;
 using ClubDeportivoEquipo13.Enums;
 using ClubDeportivoEquipo13.Validaciones;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,7 +43,7 @@ namespace ClubDeportivoEquipo13.Forms
             // Buscador de fecha, fecha minima del día de hoy
             dtpFecha.MinDate = DateTime.Now;
             // Fecha máxima, último día del mes actual
-            dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+           // dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
 
         }
 
@@ -56,7 +57,6 @@ namespace ClubDeportivoEquipo13.Forms
 
             //Desabilita elección de Actividad y Horario
             grpNoSocios.Enabled = false;
-
 
         }
 
@@ -135,25 +135,34 @@ namespace ClubDeportivoEquipo13.Forms
             // le agrega 1 mes a la fecha de pago, indicando el vencimiento
             DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
             
-
-
             CuotasDatos datos = new CuotasDatos();
             var dni = txtDni.Text;
+            //Consulta si la fecha electa no tiene una cuota vigente
+
+            int tieneVencida = datos.ConsultarVencimientoSocio(dni, dtpFecha.Value.Date);
+
 
             try
             {
                 int idGenerado = 0;
+
                 if (rdoMensual.Checked)
                 {
+                    if (tieneVencida == 0)
+                    {
+                        MessageBox.Show("Error al crear cuota: La última cuota aún está vigente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    
                     CuotaMensual cuotaMensual = new CuotaMensual
                     {
                         Monto = Convert.ToDouble(txtMonto.Text),
-                        FechaPago = DateTime.Now,
+                        FechaPago = dtpFecha.Value,
                         FechaVencimiento = vencimientoCalc,
                         FormaPago = cboFormaPago.Text
                     };
-                    CuotasDatos cuotasDatos = new CuotasDatos();
-                    var rta = cuotasDatos.NuevaCuotaMensual(dni, cuotaMensual);
+                    
+                    var rta = datos.NuevaCuotaMensual(dni, cuotaMensual);
                     idGenerado = Convert.ToInt32(rta);
                     if (idGenerado == -1)
                     {
@@ -187,7 +196,6 @@ namespace ClubDeportivoEquipo13.Forms
                     };
                     CuotasDatos cuo = new CuotasDatos();
                     var respuesta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
-                    //MessageBox.Show("DIARIA" + respuesta);
                     idGenerado = Convert.ToInt32(respuesta);
                     if (idGenerado == -1)
                     {
@@ -207,7 +215,6 @@ namespace ClubDeportivoEquipo13.Forms
 
                 }
 
-               
                 // Mostrar comprobante o carnet según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorDni(dni);
@@ -218,7 +225,7 @@ namespace ClubDeportivoEquipo13.Forms
                 string apellido = personaDatos.Rows[0]["apellido"].ToString();
                 string monto = txtMonto.Text;
                 string formaPago = cboFormaPago.Text;
-                string fechaPago = DateTime.Now.ToShortDateString();
+                string fechaPago = dtpFecha.Value.ToShortDateString();
                 string vencimiento = vencimientoCalc.ToShortDateString();
 
                 //SOCIO -> CARNET + COMPROBANTE
@@ -249,7 +256,6 @@ namespace ClubDeportivoEquipo13.Forms
                     comprobante.ShowDialog();
                 }
                 this.Close();
-
             }
             catch
             {
@@ -281,17 +287,13 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 AyudanteEnums.BindEnumToComboBox<HorarioAparatos>(cboHorario);
             }
-
-
         }
 
-        private void cboHorario_SelectedIndexChanged(object sender, EventArgs e)
-        { 
-        }
 
         private void txtDni_TextChanged(object sender, KeyPressEventArgs e)
         {
             AyudanteValidador.PermitirSoloNumeros(e, txtDni, toolTipDni);
+            AyudanteValidador.LimiteDeCaracteres(e, txtDni, toolTipDni, 8);
         }
 
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)

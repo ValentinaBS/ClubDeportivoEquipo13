@@ -177,24 +177,38 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            PersonasDatos datos = new PersonasDatos();
+            // Pregunta de confirmacion a cancelar.
+            System.Media.SystemSounds.Beep.Play();
+            DialogResult result = MessageBox.Show(
+                "¿Realmente desea cancelar? Se borraran todos los cambios.",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-            // Borrar persona creada previamente
-            datos.EliminarUltimaPersona();
-
-            // Mensajes de confirmación si se borró o no    
-            bool fueEliminado = datos.EliminarUltimaPersona();
-
-            if (fueEliminado)
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Última persona fue eliminada correctamente");
-            }
-            else
-            {
-                MessageBox.Show("No se encontró ninguna persona para eliminar");
-            }
+                PersonasDatos datos = new PersonasDatos();
 
-            this.Hide(); // Cierra el formulario sin crear instancias duplicadas
+                // Borrar persona creada previamente
+                datos.EliminarUltimaPersona();
+
+                // Mensajes de confirmación si se borró o no    
+                bool fueEliminado = datos.EliminarUltimaPersona();
+
+                if (fueEliminado)
+                {
+                    MessageBox.Show("Se borraron los datos.");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró ninguna persona para eliminar");
+                }
+
+                this.Hide(); // Cierra el formulario sin crear instancias duplicadas
+            }
+            // Si elige No, simplemente regresa al formulario
+
         }
 
         private void rdoSocio_CheckedChanged(object sender, EventArgs e)
@@ -265,6 +279,11 @@ namespace ClubDeportivoEquipo13.Forms
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
             AyudanteValidador.PermitirSoloNumeros(e, txtMonto, toolTipMonto);
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

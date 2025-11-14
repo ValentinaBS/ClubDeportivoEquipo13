@@ -191,7 +191,6 @@
             this.cboHorario.Name = "cboHorario";
             this.cboHorario.Size = new System.Drawing.Size(100, 21);
             this.cboHorario.TabIndex = 17;
-            this.cboHorario.SelectedIndexChanged += new System.EventHandler(this.cboHorario_SelectedIndexChanged);
             // 
             // grpNoSocios
             // 
