@@ -75,11 +75,6 @@ namespace ClubDeportivoEquipo13.Datos
                     cmd.ExecuteNonQuery();
                     int idSocio = Convert.ToInt32(ParId.Value);
 
-                    // Crear cuota mensual automáticamente
-                    //socio.Cuota.IdSocio = idSocio;
-                    //CuotasDatos cuo = new CuotasDatos();
-                    //cuo.NuevaCuotaMensual(socio.Cuota);
-
                     salida = idSocio.ToString();
                 }
             }

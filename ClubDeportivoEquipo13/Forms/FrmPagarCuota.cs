@@ -182,6 +182,16 @@ namespace ClubDeportivoEquipo13.Forms
                     // Valor del combobox de actividad
                     int idActividad = (int)cboActividad.SelectedValue;
 
+                    //Verificar si la actividad ya fue comprada hoy
+                    CuotasDatos cuotasDatos = new CuotasDatos();
+                    int actividadRepetida = cuotasDatos.ConsultarActividadRepetida(dni, idActividad, DateTime.Now);
+
+                    if (actividadRepetida > 0)
+                    {
+                        MessageBox.Show("Error: Ya compró esta actividad el día de hoy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     CuotaDiaria cuotaDiaria = new CuotaDiaria
                     {
                         Monto = Convert.ToDouble(txtMonto.Text),
@@ -294,17 +304,6 @@ namespace ClubDeportivoEquipo13.Forms
         {
             // Verifica que no sea nulo
             if (cboActividad.SelectedItem is null) return;
-
-
-            /*
-            // Selecciona la propiedad "Valor" del objeto anóNIMO
-            var valorProperty = seleccion.GetType().GetProperty("Valor");
-            var value = valorProperty.GetValue(seleccion, null);
-
-            */
-
-
-
         }
 
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO.Ports;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -85,7 +86,43 @@ namespace ClubDeportivoEquipo13.Datos
                 }
             }
         }
-        
+
+        public int ConsultarActividadRepetida(string dni, int idActividad, DateTime fechaPago)
+        {
+            try
+            {
+                using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
+                {
+                    cn.Open();
+                    MySqlCommand cmd = new MySqlCommand(
+                        "SELECT COUNT(*) " +
+                        "FROM cuotadiaria cd " +
+                        "INNER JOIN nosocio ns ON cd.idNoSocio = ns.idNoSocio " +
+                        "INNER JOIN persona p " +
+                        "ON ns.idPersona = p.idPersona " +
+                        "WHERE p.dni = @dni " +
+                        "AND cd.idActividad = @idActividad " +
+                        "AND cd.fechaPago = @fechaPago;", cn);
+
+                    cmd.Parameters.AddWithValue("@dni", dni);
+                    cmd.Parameters.AddWithValue("@idActividad", idActividad);
+                    cmd.Parameters.AddWithValue("@fechaPago", fechaPago.Date);
+
+                    object resultado = cmd.ExecuteScalar();
+
+                    if (resultado != null && resultado != DBNull.Value)
+                    {
+                        return Convert.ToInt32(resultado); // Devuelve el número de registros encontrados
+                    }
+                    return 0; // No se encontraron registros
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar actividad repetida: " + ex.Message);
+                return -1; // Error en el sistema
+            }
+        }
 
         public (int resultado, DateTime fecha) ConsultarVencimientoSocio(string dni, DateTime fechaCuota)
         {
@@ -112,6 +149,8 @@ namespace ClubDeportivoEquipo13.Datos
                 }
                 return (-1, fechaCuota); // Error en el sistema.
             }
+
+
         }
 
     }
