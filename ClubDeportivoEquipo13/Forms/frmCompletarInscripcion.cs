@@ -144,7 +144,7 @@ namespace ClubDeportivoEquipo13.Forms
                     int seleccionCuotas = (int)cboFormaPago.SelectedValue;
 
                     // Convierte el monto de string a double y toma dos decimales
-                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0);
+                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0, 2);
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
                     string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
@@ -154,7 +154,7 @@ namespace ClubDeportivoEquipo13.Forms
                             nombre,
                             apellido,
                             dni,
-                            montoDividido,
+                            montoDouble,
                             formaPago,
                             fechaPago,
                             vencimiento,
@@ -167,11 +167,13 @@ namespace ClubDeportivoEquipo13.Forms
                 }
                 else //NO SOCIO -> COMPROBANTE
                 {
+                    double montoDouble = Math.Round(double.Parse(monto), 2);
+
                     frmComprobantePago comprobante = new frmComprobantePago(
                         nombre,
                         apellido,
                         dni,
-                        monto,
+                        montoDouble,
                         formaPago,
                         fechaPago
                         );

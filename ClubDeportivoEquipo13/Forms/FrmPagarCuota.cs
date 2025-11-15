@@ -43,7 +43,7 @@ namespace ClubDeportivoEquipo13.Forms
             // Buscador de fecha, fecha minima del día de hoy
             dtpFecha.MinDate = DateTime.Now;
             // Fecha máxima, último día del mes actual
-           // dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+            dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
 
         }
 
@@ -106,12 +106,6 @@ namespace ClubDeportivoEquipo13.Forms
             {
                 MessageBox.Show("La forma de pago es requerida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboFormaPago.Focus();
-                return;
-            }
-
-            if (!rdoMensual.Checked && !rdoDiaria.Checked)
-            {
-                MessageBox.Show("Debe seleccionar el tipo de Cuota", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -239,33 +233,36 @@ namespace ClubDeportivoEquipo13.Forms
                     int seleccionCuotas = (int)cboFormaPago.SelectedValue;
 
                     // Convierte el monto de string a double y toma dos decimales
-                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0);
+                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0, 2);
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
-                    string montoDividido = (montoDouble / seleccionCuotas).ToString();
+                    //string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    for (int i = 0; i < seleccionCuotas; i++)
-                    {
-                        frmComprobantePago comprobante = new frmComprobantePago(
-                            nombre,
-                            apellido,
-                            dni,
-                            montoDividido,
-                            formaPago,
-                            fechaPago,
-                            vencimiento,
-                            i + 1, // Cuota actual +1, empieza de 0
-                            seleccionCuotas
-                        );
-                        comprobante.ShowDialog();
-                    }
-                }
-                else //NO SOCIO -> COMPROBANTE
-                {
+                    int cantCuotas = seleccionCuotas;
+                    double montoTotal = montoDouble;
+                    double montoCuotas = Math.Round(montoDouble / cantCuotas, 2);
+
                     frmComprobantePago comprobante = new frmComprobantePago(
                         nombre,
                         apellido,
                         dni,
-                        monto,
+                        montoTotal,
+                        formaPago,
+                        fechaPago,
+                        vencimiento,
+                        cantCuotas,
+                        montoCuotas
+                    );
+                    comprobante.ShowDialog();
+                }
+                else //NO SOCIO -> COMPROBANTE
+                {
+                    double montoDouble = Math.Round(double.Parse(monto), 2);
+
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni,
+                        montoDouble,
                         formaPago,
                         fechaPago
                         );
@@ -275,7 +272,7 @@ namespace ClubDeportivoEquipo13.Forms
             }
             catch
             {
-                
+                MessageBox.Show("Error inesperado: ");
             }
             
         }

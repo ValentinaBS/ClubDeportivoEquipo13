@@ -14,21 +14,21 @@ namespace ClubDeportivoEquipo13.Forms
     public partial class frmComprobantePago : Form
     {
         public frmComprobantePago(string nombre, string apellido, string dni, 
-            string monto, string forma, string fecha, string vencimiento = ""
-            , int cuota = 1, int cantCuotas = 1)
+            double monto, string forma, string fecha, string vencimiento = ""
+            , int cantCuotas = 1, double montoCuotas = 0)
         {
             InitializeComponent();
 
             lblNombreCompleto.Text = nombre + " " + apellido;
             lblDni.Text = dni;
-            lblMontoAbonado.Text = "$ " + monto;
+            lblMontoAbonado.Text = "$ " + monto.ToString("0.00");
             lblFechaPago.Text = fecha;
             lblFormaPago.Text = forma;
 
             if (cantCuotas != 1)
             {
                 lblCuotas.Visible = true;
-                lblCuotas.Text = "Cuota N°" + cuota + " de " + cantCuotas;
+                lblCuotas.Text = $"Pagado en {cantCuotas} cuotas de $ {montoCuotas.ToString("0.00")}";                
             }
             else
             {
