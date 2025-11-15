@@ -149,8 +149,8 @@ namespace ClubDeportivoEquipo13.Forms
                 {
                     if (tieneVencida.resultado == 0)
                     {
-                        MessageBox.Show("Error al crear cuota: La última cuota aún está vigente hasta: "
-                            + tieneVencida.fecha.Date, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("La última cuota aún está vigente hasta el: "
+                            + tieneVencida.fecha.Date.ToString("dd/MM/yyyy"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     
