@@ -148,6 +148,7 @@ namespace ClubDeportivoEquipo13.Forms
                     if (idGenerado == -1)
                     {
                         MessageBox.Show("Error al crear cuota: La persona es No-Socio (Cuota Diaria)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        rdoDiaria.Checked = true;
                         return;
 
                     }
@@ -189,6 +190,7 @@ namespace ClubDeportivoEquipo13.Forms
                     if (idGenerado == -1)
                     {
                         MessageBox.Show("Error al crear cuota: La persona es Socio/a (Cuota Mensual)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        rdoMensual.Checked = true;
                         return;
 
                     }

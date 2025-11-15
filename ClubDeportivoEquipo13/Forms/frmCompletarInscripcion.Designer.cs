@@ -67,7 +67,6 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(220, 20);
             this.dtpFecha.TabIndex = 2;
-            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // cboFormaPago
             // 
@@ -183,6 +182,7 @@
             this.Name = "frmCompletarInscripcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Completar Inscripción";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCompletarInscripcion_FormClosing);
             this.Load += new System.EventHandler(this.frmCompletarInscripcion_Load);
             this.grpNoSocios.ResumeLayout(false);
             this.ResumeLayout(false);

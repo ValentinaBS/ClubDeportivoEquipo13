@@ -10,7 +10,7 @@ namespace ClubDeportivoEquipo13.Enums
 {
     public static class AyudanteEnums
     {
-        public static string GetEnumDescription(Enum value)
+        public static string GetEnumDescripcion(Enum value)
         {
             var field = value.GetType().GetField(value.ToString());
             var attr = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
@@ -20,27 +20,15 @@ namespace ClubDeportivoEquipo13.Enums
 
     public static void BindEnumToComboBox<TEnum>(ComboBox comboBox) where TEnum : Enum
         {
-            /*
+            
             comboBox.DataSource = Enum.GetValues(typeof(TEnum))
-                .Cast<TEnum>()
-                .Select(v => new
-                {
-                    Valor = v,
-                    Descripcion = GetEnumDescription(v)
-                })
-                .ToList();
-
-            comboBox.DisplayMember = "Descripcion";
-            comboBox.ValueMember = "Valor";
-            */
-            comboBox.DataSource = Enum.GetValues(typeof(TEnum))
-    .Cast<TEnum>()
-    .Select(v => new
-    {
-        Valor = (int)(object)v,              // store INT, not enum
-        Descripcion = GetEnumDescription(v)  // text shown
-    })
-    .ToList();
+            .Cast<TEnum>()
+            .Select(v => new
+        {
+            Valor = (int)(object)v,              // guarda INT, no enums
+            Descripcion = GetEnumDescripcion(v)  // texto descriptivo
+        })
+            .ToList();
 
             comboBox.DisplayMember = "Descripcion";
             comboBox.ValueMember = "Valor";
@@ -61,7 +49,7 @@ namespace ClubDeportivoEquipo13.Enums
                 .Select(v => new
                 {
                     Valor = v,
-                    Descripcion = AyudanteEnums.GetEnumDescription(v)
+                    Descripcion = AyudanteEnums.GetEnumDescripcion(v)
                 })
                 .ToList();
 

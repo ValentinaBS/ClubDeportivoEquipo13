@@ -16,6 +16,10 @@ namespace ClubDeportivoEquipo13.Datos
 
         public DataTable ObtenerTodasLasActividades()
         {
+            /*
+             * Método para obtener todas las actividades de la base de datos a los comboboxes
+             * de Completar inscripción y Pagar cuota
+             */
             DataTable tabla = new DataTable();
             try
             {

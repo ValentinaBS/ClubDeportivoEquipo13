@@ -110,10 +110,6 @@ namespace ClubDeportivoEquipo13.Datos
                     cmd.ExecuteNonQuery();
                     int idNoSocio = Convert.ToInt32(ParId.Value);
 
-                    // Crear cuota diaria automáticamente
-                    //noSocio.Cuota.IdNoSocio = idNoSocio;
-                   // CuotasDatos cuo = new CuotasDatos();
-                    //cuo.NuevaCuotaDiaria(noSocio.Cuota);
 
                     salida = idNoSocio.ToString();
                 }

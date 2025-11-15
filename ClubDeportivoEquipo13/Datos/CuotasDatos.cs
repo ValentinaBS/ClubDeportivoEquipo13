@@ -126,6 +126,11 @@ namespace ClubDeportivoEquipo13.Datos
 
         public (int resultado, DateTime fecha) ConsultarVencimientoSocio(string dni, DateTime fechaCuota)
         {
+            /* 
+             Para comprar nuevas cuotas mensuales, se compara la ultima fecha de vencimiento
+            de la tabla socios, con la fecha que se quiere pagar
+             */
+
             using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
             {
                 cn.Open();

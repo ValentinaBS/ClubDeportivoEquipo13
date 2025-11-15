@@ -25,6 +25,41 @@ namespace ClubDeportivoEquipo13.Forms
             AyudanteEnums.BindEnumToComboBox<TiposDePago>(cboFormaPago);
         }
 
+        private void ConfirmarSalida()
+        {
+            // Pregunta de confirmacion a cancelar.
+            System.Media.SystemSounds.Beep.Play();
+            DialogResult result = MessageBox.Show(
+                "¿Realmente desea cancelar? Se borraran todos los cambios.",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                PersonasDatos datos = new PersonasDatos();
+
+                // Borrar persona creada previamente
+                datos.EliminarUltimaPersona();
+
+                // Mensajes de confirmación si se borró o no    
+                bool fueEliminado = datos.EliminarUltimaPersona();
+
+                if (fueEliminado)
+                {
+                    MessageBox.Show("Se borraron los datos.");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró ninguna persona para eliminar");
+                }
+
+                this.Hide(); // Cierra el formulario sin crear instancias duplicadas
+            }
+            // Si elige No, simplemente regresa al formulario
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
           
@@ -186,38 +221,7 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Pregunta de confirmacion a cancelar.
-            System.Media.SystemSounds.Beep.Play();
-            DialogResult result = MessageBox.Show(
-                "¿Realmente desea cancelar? Se borraran todos los cambios.",
-                "Confirmar cancelación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                PersonasDatos datos = new PersonasDatos();
-
-                // Borrar persona creada previamente
-                datos.EliminarUltimaPersona();
-
-                // Mensajes de confirmación si se borró o no    
-                bool fueEliminado = datos.EliminarUltimaPersona();
-
-                if (fueEliminado)
-                {
-                    MessageBox.Show("Se borraron los datos.");
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró ninguna persona para eliminar");
-                }
-
-                this.Hide(); // Cierra el formulario sin crear instancias duplicadas
-            }
-            // Si elige No, simplemente regresa al formulario
-
+            ConfirmarSalida();
         }
 
         private void rdoSocio_CheckedChanged(object sender, EventArgs e)
@@ -254,7 +258,7 @@ namespace ClubDeportivoEquipo13.Forms
             dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
 
 
-            // Carga las actividades de la base de datos al comboboxh
+            // Carga las actividades de la base de datos al combobox
             ActividadDatos actividadDatos = new ActividadDatos();
             DataTable actividades = actividadDatos.ObtenerTodasLasActividades();
             cboActividad.DataSource = actividades;
@@ -263,28 +267,24 @@ namespace ClubDeportivoEquipo13.Forms
         }
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
-        {   // Pone los valores del enum en las cajas
+        {   
             // Verifica que no sea nulo
             if (cboActividad.SelectedItem is null) return;
 
             var seleccion = cboActividad.SelectedItem;
 
-
-        }
-
-        private void cboHorario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Validación de campo
             AyudanteValidador.PermitirSoloNumeros(e, txtMonto, toolTipMonto);
         }
 
-        private void dtpFecha_ValueChanged(object sender, EventArgs e)
-        {
 
+        private void frmCompletarInscripcion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ConfirmarSalida();
         }
     }
 }
