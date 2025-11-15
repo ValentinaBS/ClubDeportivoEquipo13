@@ -106,7 +106,7 @@ namespace ClubDeportivoEquipo13.Datos
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
