@@ -43,7 +43,7 @@ namespace ClubDeportivoEquipo13.Forms
             // Buscador de fecha, fecha minima del día de hoy
             dtpFecha.MinDate = DateTime.Now;
             // Fecha máxima, último día del mes actual
-            dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+            //dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
 
         }
 
@@ -244,7 +244,7 @@ namespace ClubDeportivoEquipo13.Forms
                     frmComprobantePago comprobante = new frmComprobantePago(
                         nombre,
                         apellido,
-                        dni,
+                        dni.Insert(5, ".").Insert(2, "."), // Pone los puntitos al documento
                         montoTotal,
                         formaPago,
                         fechaPago,

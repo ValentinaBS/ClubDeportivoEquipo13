@@ -131,11 +131,12 @@ namespace ClubDeportivoEquipo13.Forms
                     frmCarnetSocio carnet = new frmCarnetSocio(
                         nombre,
                         apellido,
-                        dni,
+                        dni.Insert(5, ".").Insert(2, "."), // Pone los puntitos al documento
                         idGenerado.ToString(),
                         vencimiento
                         );
                     carnet.ShowDialog();
+
 
                     // Toma el valor numerico del enum de Forma de pago, para detectar cuotas
                     var seleccionPago = cboFormaPago.SelectedItem;
@@ -146,23 +147,24 @@ namespace ClubDeportivoEquipo13.Forms
                     // Convierte el monto de string a double y toma dos decimales
                     double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0, 2);
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
-                    string montoDividido = (montoDouble / seleccionCuotas).ToString();
+                    //string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    for (int i = 0; i < seleccionCuotas; i++)
-                    {
-                        frmComprobantePago comprobante = new frmComprobantePago(
-                            nombre,
-                            apellido,
-                            dni,
-                            montoDouble,
-                            formaPago,
-                            fechaPago,
-                            vencimiento,
-                            i + 1, // Cuota actual +1, empieza de 0
-                            seleccionCuotas
-                        );
-                        comprobante.ShowDialog();
-                    }
+                    int cantCuotas = seleccionCuotas;
+                    double montoTotal = montoDouble;
+                    double montoCuotas = Math.Round(montoDouble / cantCuotas, 2);
+
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni.Insert(5, ".").Insert(2, "."), // Pone los puntitos al documento
+                        montoTotal,
+                        formaPago,
+                        fechaPago,
+                        vencimiento,
+                        cantCuotas,
+                        montoCuotas
+                    );
+                    comprobante.ShowDialog();
 
                 }
                 else //NO SOCIO -> COMPROBANTE
