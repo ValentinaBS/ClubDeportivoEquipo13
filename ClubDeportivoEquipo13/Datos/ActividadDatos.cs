@@ -13,6 +13,28 @@ namespace ClubDeportivoEquipo13.Datos
 {
     public class ActividadDatos
     {
+
+        public DataTable ObtenerTodasLasActividades()
+        {
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
+                {
+                    cn.Open();
+                    string query = "SELECT idActividad, nombreActividad FROM actividad;";
+                    MySqlCommand cmd = new MySqlCommand(query, cn);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(tabla);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener las actividades: " + ex.Message);
+            }
+            return tabla;
+        }
+
         public int? BuscarActividadPorTipo(string tipoActividad, int horario)
         {
             /* La base de datos de actividad es muy básica, nos parecio mas fácil este sistema.

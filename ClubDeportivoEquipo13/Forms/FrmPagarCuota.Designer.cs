@@ -43,10 +43,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cboFormaPago = new System.Windows.Forms.ComboBox();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.cboHorario = new System.Windows.Forms.ComboBox();
             this.grpNoSocios = new System.Windows.Forms.GroupBox();
             this.cboActividad = new System.Windows.Forms.ComboBox();
-            this.lblActividadHorario = new System.Windows.Forms.Label();
             this.lblActividad = new System.Windows.Forms.Label();
             this.toolTipDni = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipMonto = new System.Windows.Forms.ToolTip(this.components);
@@ -184,19 +182,9 @@
             this.txtDni.TabIndex = 16;
             this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_TextChanged);
             // 
-            // cboHorario
-            // 
-            this.cboHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboHorario.Location = new System.Drawing.Point(161, 39);
-            this.cboHorario.Name = "cboHorario";
-            this.cboHorario.Size = new System.Drawing.Size(100, 21);
-            this.cboHorario.TabIndex = 17;
-            // 
             // grpNoSocios
             // 
-            this.grpNoSocios.Controls.Add(this.cboHorario);
             this.grpNoSocios.Controls.Add(this.cboActividad);
-            this.grpNoSocios.Controls.Add(this.lblActividadHorario);
             this.grpNoSocios.Controls.Add(this.lblActividad);
             this.grpNoSocios.Enabled = false;
             this.grpNoSocios.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -210,19 +198,11 @@
             // cboActividad
             // 
             this.cboActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboActividad.Location = new System.Drawing.Point(25, 39);
+            this.cboActividad.Location = new System.Drawing.Point(28, 39);
             this.cboActividad.Name = "cboActividad";
-            this.cboActividad.Size = new System.Drawing.Size(100, 21);
+            this.cboActividad.Size = new System.Drawing.Size(209, 21);
             this.cboActividad.TabIndex = 17;
             this.cboActividad.SelectedIndexChanged += new System.EventHandler(this.cboActividad_SelectedIndexChanged);
-            // 
-            // lblActividadHorario
-            // 
-            this.lblActividadHorario.Location = new System.Drawing.Point(143, 22);
-            this.lblActividadHorario.Name = "lblActividadHorario";
-            this.lblActividadHorario.Size = new System.Drawing.Size(129, 20);
-            this.lblActividadHorario.TabIndex = 19;
-            this.lblActividadHorario.Text = "Horarios Disponibles:";
             // 
             // lblActividad
             // 
@@ -278,11 +258,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cboFormaPago;
         private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.ComboBox cboHorario;
         private System.Windows.Forms.GroupBox grpNoSocios;
         private System.Windows.Forms.ComboBox cboActividad;
         private System.Windows.Forms.Label lblActividad;
-        private System.Windows.Forms.Label lblActividadHorario;
         private System.Windows.Forms.ToolTip toolTipDni;
         private System.Windows.Forms.ToolTip toolTipMonto;
     }

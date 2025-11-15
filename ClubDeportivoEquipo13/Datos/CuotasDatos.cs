@@ -85,27 +85,7 @@ namespace ClubDeportivoEquipo13.Datos
                 }
             }
         }
-        /*
-        public bool ConsultarVencimientoSocio(string dni, DateTime fechaCuota)
-        {
-            using (MySqlConnection cn = Conexion.getInstancia().CrearConexion())
-            {
-                cn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT fechaVencimiento " +
-                    "FROM socio WHERE idPersona = (SELECT idPersona FROM persona WHERE dni = @dni)", cn);
-                cmd.Parameters.AddWithValue("@dni", dni);
-
-                object resultado = cmd.ExecuteScalar();
-
-                if (resultado != null && resultado != DBNull.Value)
-                {
-                    DateTime fechaVencimiento = Convert.ToDateTime(resultado);
-                    return fechaCuota > fechaVencimiento; // La ultima cuota está vencida
-                }
-
-                return false;
-            }
-        } */
+        
 
         public (int resultado, DateTime fecha) ConsultarVencimientoSocio(string dni, DateTime fechaCuota)
         {

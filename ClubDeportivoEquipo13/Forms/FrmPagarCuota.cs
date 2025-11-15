@@ -31,9 +31,6 @@ namespace ClubDeportivoEquipo13.Forms
         {
             // Enum - Forma de pago
             AyudanteEnums.BindEnumToComboBox<TiposDePago>(cboFormaPago);
-            // Enum - Tipos de actividad
-            AyudanteEnums.BindEnumToComboBox<TiposDeActividades>(cboActividad);
-
         }
 
 
@@ -43,8 +40,15 @@ namespace ClubDeportivoEquipo13.Forms
             // Buscador de fecha, fecha minima del día de hoy
             dtpFecha.MinDate = DateTime.Now;
             // Fecha máxima, último día del mes actual
-           // dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+            // dtpFecha.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
 
+
+            // Carga las actividades de la base de datos al combobox
+            ActividadDatos actividadDatos = new ActividadDatos();
+            DataTable actividades = actividadDatos.ObtenerTodasLasActividades();
+            cboActividad.DataSource = actividades;
+            cboActividad.DisplayMember = "nombreActividad";  // descripción
+            cboActividad.ValueMember = "idActividad";        // valor interno
         }
 
         private void rdoMensual_CheckedChanged(object sender, EventArgs e)
@@ -123,13 +127,6 @@ namespace ClubDeportivoEquipo13.Forms
                     cboActividad.Focus();
                     return;
                 }
-
-                if (cboHorario.SelectedValue == null)
-                {
-                    MessageBox.Show("El horario es requerido para cuota diaria", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    cboHorario.Focus();
-                    return;
-                }
             }
             // le agrega 1 mes a la fecha de pago, indicando el vencimiento
             DateTime vencimientoCalc = dtpFecha.Value.AddMonths(1);
@@ -182,18 +179,15 @@ namespace ClubDeportivoEquipo13.Forms
                 }
                 else if (rdoDiaria.Checked)
                 {
-                    ActividadDatos actividadDatos = new ActividadDatos();
-                    // Toma los datos del los enums del combobox actividad y horario
-                    var seleccionActividad = cboActividad.Text;
-                    int seleccionHorario = (int)cboHorario.SelectedValue;
-                    var actividadId = actividadDatos.BuscarActividadPorTipo(seleccionActividad, seleccionHorario);
+                    // Valor del combobox de actividad
+                    int idActividad = (int)cboActividad.SelectedValue;
 
                     CuotaDiaria cuotaDiaria = new CuotaDiaria
                     {
                         Monto = Convert.ToDouble(txtMonto.Text),
                         FechaPago = DateTime.Now,
                         FormaPago = cboFormaPago.Text,
-                        IdActividad = actividadId.HasValue ? actividadId.Value : 0
+                        IdActividad = idActividad
                     };
                     CuotasDatos cuo = new CuotasDatos();
                     var respuesta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
@@ -301,25 +295,16 @@ namespace ClubDeportivoEquipo13.Forms
             // Verifica que no sea nulo
             if (cboActividad.SelectedItem is null) return;
 
-            var seleccion = cboActividad.SelectedItem;
 
+            /*
             // Selecciona la propiedad "Valor" del objeto anóNIMO
             var valorProperty = seleccion.GetType().GetProperty("Valor");
             var value = valorProperty.GetValue(seleccion, null);
 
-            // Guarda el tipo de actividad seleccionada
-            TiposDeActividades actividad = (TiposDeActividades)value;
-            
+            */
 
-            if (actividad == TiposDeActividades.Musculacion)
-            {
-                // Carga los combobox con los horarios según la actividad seleccionada
-                AyudanteEnums.BindEnumToComboBox<HorarioMusculacion>(cboHorario);
-            }
-            else if (actividad == TiposDeActividades.Aparatos)
-            {
-                AyudanteEnums.BindEnumToComboBox<HorarioAparatos>(cboHorario);
-            }
+
+
         }
 
 

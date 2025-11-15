@@ -23,7 +23,7 @@ namespace ClubDeportivoEquipo13.Enums
         Tarjeta6Cuotas = 6
 
     }
-
+    /*
     enum TiposDeActividades
     {
         [Description("Musculación")]
@@ -76,7 +76,7 @@ namespace ClubDeportivoEquipo13.Enums
         [Description("7:00 PM")]
         Hora19 = 19,
 
-    }
+    }*/
 
 
 }
