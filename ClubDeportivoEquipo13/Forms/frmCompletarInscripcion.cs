@@ -284,7 +284,7 @@ namespace ClubDeportivoEquipo13.Forms
 
         private void frmCompletarInscripcion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ConfirmarSalida();
+            
         }
     }
 }
