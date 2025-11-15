@@ -14,7 +14,7 @@ namespace ClubDeportivoEquipo13.Enums
         Efectivo = 1,
 
         [Description("Tarjeta de Crédito")]
-        Tarjeta = 1,
+        Tarjeta = 2,
 
         [Description("Tarjeta 3 Cuotas S/I")]
         Tarjeta3Cuotas = 3,

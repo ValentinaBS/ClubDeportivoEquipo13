@@ -148,19 +148,34 @@ namespace ClubDeportivoEquipo13.Forms
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
                     string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    for (int i = 0; i < seleccionCuotas; i++)
+                    if (seleccionCuotas == 3 || seleccionCuotas == 6)
+                    {
+                        for (int i = 0; i < seleccionCuotas; i++)
+                        {
+                            frmComprobantePago comprobante = new frmComprobantePago(
+                                nombre,
+                                apellido,
+                                dni,
+                                montoDividido,
+                                formaPago,
+                                fechaPago,
+                                vencimiento,
+                                i + 1, // Cuota actual +1, empieza de 0
+                                seleccionCuotas
+                            );
+                            comprobante.ShowDialog();
+                        }
+                    } else
                     {
                         frmComprobantePago comprobante = new frmComprobantePago(
-                            nombre,
-                            apellido,
-                            dni,
-                            montoDividido,
-                            formaPago,
-                            fechaPago,
-                            vencimiento,
-                            i + 1, // Cuota actual +1, empieza de 0
-                            seleccionCuotas
-                        );
+                                nombre,
+                                apellido,
+                                dni,
+                                montoDividido,
+                                formaPago,
+                                fechaPago,
+                                vencimiento
+                            );
                         comprobante.ShowDialog();
                     }
 

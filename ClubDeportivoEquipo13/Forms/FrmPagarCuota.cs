@@ -216,12 +216,12 @@ namespace ClubDeportivoEquipo13.Forms
 
                 }
 
-                // Mostrar comprobante o carnet según corresponda
+                // Mostrar comprobante según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorDni(dni);
 
 
-                //datos para el comprobante o carnet
+                //datos para el comprobante 
                 string nombre = personaDatos.Rows[0]["nombre"].ToString();
                 string apellido = personaDatos.Rows[0]["apellido"].ToString();
                 string monto = txtMonto.Text;
@@ -243,19 +243,35 @@ namespace ClubDeportivoEquipo13.Forms
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
                     string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    for (int i = 0; i < seleccionCuotas; i++)
+                    if (seleccionCuotas == 3 || seleccionCuotas == 6)
+                    {
+                        for (int i = 0; i < seleccionCuotas; i++)
+                        {
+                            frmComprobantePago comprobante = new frmComprobantePago(
+                                nombre,
+                                apellido,
+                                dni,
+                                montoDividido,
+                                formaPago,
+                                fechaPago,
+                                vencimiento,
+                                i + 1, // Cuota actual +1, empieza de 0
+                                seleccionCuotas
+                            );
+                            comprobante.ShowDialog();
+                        }
+                    }
+                    else
                     {
                         frmComprobantePago comprobante = new frmComprobantePago(
-                            nombre,
-                            apellido,
-                            dni,
-                            montoDividido,
-                            formaPago,
-                            fechaPago,
-                            vencimiento,
-                            i + 1, // Cuota actual +1, empieza de 0
-                            seleccionCuotas
-                        );
+                                nombre,
+                                apellido,
+                                dni,
+                                montoDividido,
+                                formaPago,
+                                fechaPago,
+                                vencimiento
+                            );
                         comprobante.ShowDialog();
                     }
                 }
