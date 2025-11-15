@@ -10,6 +10,7 @@ namespace ClubDeportivoEquipo13.Forms
         public frmLogin()
         {
             InitializeComponent();
+            this.AcceptButton = btnIngresar;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)

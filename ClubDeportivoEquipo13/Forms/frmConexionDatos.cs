@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Drawing;
@@ -105,7 +106,7 @@ namespace ClubDeportivoEquipo13.Datos
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
