@@ -126,11 +126,12 @@ namespace ClubDeportivoEquipo13.Forms
                     frmCarnetSocio carnet = new frmCarnetSocio(
                         nombre,
                         apellido,
-                        dni,
+                        dni.Insert(5, ".").Insert(2, "."), // Pone los puntitos al documento
                         idGenerado.ToString(),
                         vencimiento
                         );
                     carnet.ShowDialog();
+
 
                     // Toma el valor numerico del enum de Forma de pago, para detectar cuotas
                     var seleccionPago = cboFormaPago.SelectedItem;
@@ -139,49 +140,37 @@ namespace ClubDeportivoEquipo13.Forms
                     int seleccionCuotas = (int)cboFormaPago.SelectedValue;
 
                     // Convierte el monto de string a double y toma dos decimales
-                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0);
+                    double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0, 2);
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
-                    string montoDividido = (montoDouble / seleccionCuotas).ToString();
+                    //string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    if (seleccionCuotas == 3 || seleccionCuotas == 6)
-                    {
-                        for (int i = 0; i < seleccionCuotas; i++)
-                        {
-                            frmComprobantePago comprobante = new frmComprobantePago(
-                                nombre,
-                                apellido,
-                                dni,
-                                montoDividido,
-                                formaPago,
-                                fechaPago,
-                                vencimiento,
-                                i + 1, // Cuota actual +1, empieza de 0
-                                seleccionCuotas
-                            );
-                            comprobante.ShowDialog();
-                        }
-                    } else
-                    {
-                        frmComprobantePago comprobante = new frmComprobantePago(
-                                nombre,
-                                apellido,
-                                dni,
-                                montoDividido,
-                                formaPago,
-                                fechaPago,
-                                vencimiento
-                            );
-                        comprobante.ShowDialog();
-                    }
+                    int cantCuotas = seleccionCuotas;
+                    double montoTotal = montoDouble;
+                    double montoCuotas = Math.Round(montoDouble / cantCuotas, 2);
+
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni.Insert(5, ".").Insert(2, "."), // Pone los puntitos al documento
+                        montoTotal,
+                        formaPago,
+                        fechaPago,
+                        vencimiento,
+                        cantCuotas,
+                        montoCuotas
+                    );
+                    comprobante.ShowDialog();
 
                 }
                 else //NO SOCIO -> COMPROBANTE
                 {
+                    double montoDouble = Math.Round(double.Parse(monto), 2);
+
                     frmComprobantePago comprobante = new frmComprobantePago(
                         nombre,
                         apellido,
                         dni,
-                        monto,
+                        montoDouble,
                         formaPago,
                         fechaPago
                         );
