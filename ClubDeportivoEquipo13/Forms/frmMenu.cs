@@ -19,6 +19,7 @@ namespace ClubDeportivoEquipo13.Forms
         public frmMenu()
         {
             InitializeComponent();
+            this.CancelButton = btnSalir;
         }
 
         private void frmMenu_Load(object sender, EventArgs e)

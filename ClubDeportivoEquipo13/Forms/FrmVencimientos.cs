@@ -20,6 +20,8 @@ namespace ClubDeportivoEquipo13.Forms
             InitializeComponent();
             _personasDatos = new PersonasDatos();
             ConfigurarColumnasDataGridView();
+            this.AcceptButton = btnGenerarListado;
+            this.CancelButton = btnAceptar;
         }
 
         private void ConfigurarColumnasDataGridView()

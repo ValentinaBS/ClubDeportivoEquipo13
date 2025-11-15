@@ -15,6 +15,8 @@ namespace ClubDeportivoEquipo13.Forms
         {
             InitializeComponent();
             InitializeComboBox();
+            this.AcceptButton = btnRegistrarPago;
+            this.CancelButton = btnCancelar;
         }
 
         private void InitializeComboBox()

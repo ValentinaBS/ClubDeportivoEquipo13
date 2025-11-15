@@ -11,6 +11,9 @@ namespace ClubDeportivoEquipo13.Forms
         public frmInscripcion()
         {
             InitializeComponent();
+            this.AcceptButton = btnGuardar;
+            this.CancelButton = btnVolver;
+
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
