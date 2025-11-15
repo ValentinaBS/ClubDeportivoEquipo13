@@ -1,21 +1,11 @@
 ﻿using ClubDeportivoEquipo13.Datos;
 using ClubDeportivoEquipo13.Dominio;
-using ClubDeportivoEquipo13.Entidades;
 using ClubDeportivoEquipo13.Enums;
 using ClubDeportivoEquipo13.Validaciones;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace ClubDeportivoEquipo13.Forms
 {
@@ -241,21 +231,23 @@ namespace ClubDeportivoEquipo13.Forms
                     // Divide el monto por la cantidad de cuotas y lo devuelve en string
                     //string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    for (int i = 0; i < seleccionCuotas; i++)
-                    {
-                        frmComprobantePago comprobante = new frmComprobantePago(
-                            nombre,
-                            apellido,
-                            dni,
-                            montoDividido,
-                            formaPago,
-                            fechaPago,
-                            vencimiento,
-                            i + 1, // Cuota actual +1, empieza de 0
-                            seleccionCuotas
-                        );
-                        comprobante.ShowDialog();
-                    }
+                    int cantCuotas = seleccionCuotas;
+                    double montoTotal = montoDouble;
+                    double montoCuotas = Math.Round(montoDouble / cantCuotas, 2);
+
+                    frmComprobantePago comprobante = new frmComprobantePago(
+                        nombre,
+                        apellido,
+                        dni.Insert(5, ".").Insert(2, "."), // Pone los puntitos al documento
+                        montoTotal,
+                        formaPago,
+                        fechaPago,
+                        vencimiento,
+                        cantCuotas,
+                        montoCuotas
+                    );
+                    comprobante.ShowDialog();
+                
                 }
                 else //NO SOCIO -> COMPROBANTE
                 {
