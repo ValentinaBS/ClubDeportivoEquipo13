@@ -186,8 +186,8 @@ namespace ClubDeportivoEquipo13.Forms
                         FormaPago = cboFormaPago.Text,
                         IdActividad = idActividad
                     };
-                    CuotasDatos cuo = new CuotasDatos();
-                    var respuesta = cuo.NuevaCuotaDiaria(dni, cuotaDiaria);
+
+                    var respuesta = cuotasDatos.NuevaCuotaDiaria(dni, cuotaDiaria);
                     idGenerado = Convert.ToInt32(respuesta);
                     if (idGenerado == -1)
                     {
@@ -232,10 +232,16 @@ namespace ClubDeportivoEquipo13.Forms
 
                     // Convierte el monto de string a double y toma dos decimales
                     double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0, 2);
-                    // Divide el monto por la cantidad de cuotas y lo devuelve en string
-                    //string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    int cantCuotas = seleccionCuotas;
+                    // Si el enum de forma de pago es mayor a 2, significa que es en cuotas
+                    int cantCuotas = 1;
+                    // Si es en cuotas, toma el valor del enum 3 y 6, para mostrar un cartel más
+                    // claro en el comprobante
+                    if (seleccionCuotas > 2)
+                    {
+                        cantCuotas = seleccionCuotas;
+                    }
+
                     double montoTotal = montoDouble;
                     double montoCuotas = Math.Round(montoDouble / cantCuotas, 2);
 

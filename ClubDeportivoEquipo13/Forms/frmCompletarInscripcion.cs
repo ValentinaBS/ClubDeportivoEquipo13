@@ -111,7 +111,7 @@ namespace ClubDeportivoEquipo13.Forms
                 else if (rdoNoSocio.Checked)
                 {
                     int idActividad = (int)cboActividad.SelectedValue;
-
+                    
                     // Crear objeto NoSocio con la primera cuota diaria
                     NoSocio noSocio = new NoSocio
                     {
@@ -124,8 +124,8 @@ namespace ClubDeportivoEquipo13.Forms
                             IdActividad = idActividad
                         }
                     };
-
                     respuesta = datos.NuevoNoSocio(noSocio);
+                    
                     idGenerado = Convert.ToInt32(respuesta);
                 }
                 //validacion del ID generado
@@ -140,6 +140,7 @@ namespace ClubDeportivoEquipo13.Forms
                     MessageBox.Show("Inscripción registrada con éxito. ID: " + idGenerado, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
+
                 // Mostrar comprobante o carnet según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorId(IdPersona);
@@ -176,10 +177,16 @@ namespace ClubDeportivoEquipo13.Forms
 
                     // Convierte el monto de string a double y toma dos decimales
                     double montoDouble = Math.Round(double.TryParse(monto, out double result) ? result : 0, 2);
-                    // Divide el monto por la cantidad de cuotas y lo devuelve en string
-                    //string montoDividido = (montoDouble / seleccionCuotas).ToString();
 
-                    int cantCuotas = seleccionCuotas;
+                    // Si el enum de forma de pago es mayor a 2, significa que es en cuotas
+                    int cantCuotas = 1;
+                    // Si es en cuotas, toma el valor del enum 3 y 6, para mostrar un cartel más
+                    // claro en el comprobante
+                    if (seleccionCuotas > 2)
+                    {
+                        cantCuotas = seleccionCuotas;
+                    }
+
                     double montoTotal = montoDouble;
                     double montoCuotas = Math.Round(montoDouble / cantCuotas, 2);
 
@@ -279,12 +286,6 @@ namespace ClubDeportivoEquipo13.Forms
         {
             // Validación de campo
             AyudanteValidador.PermitirSoloNumeros(e, txtMonto, toolTipMonto);
-        }
-
-
-        private void frmCompletarInscripcion_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
         }
     }
 }

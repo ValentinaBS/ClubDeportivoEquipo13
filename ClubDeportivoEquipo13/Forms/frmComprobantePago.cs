@@ -24,8 +24,8 @@ namespace ClubDeportivoEquipo13.Forms
             lblMontoAbonado.Text = "$ " + monto.ToString("0.00");
             lblFechaPago.Text = fecha;
             lblFormaPago.Text = forma;
-
-            if (cantCuotas != 1)
+            // Si es mayor igual a 3 cuotas, mostrar el detalle
+            if (cantCuotas >= 3)
             {
                 lblCuotas.Visible = true;
                 lblCuotas.Text = $"Pagado en {cantCuotas} cuotas de $ {montoCuotas.ToString("0.00")}";                

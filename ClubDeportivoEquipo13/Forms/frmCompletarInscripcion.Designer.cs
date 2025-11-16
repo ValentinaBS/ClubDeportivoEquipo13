@@ -182,7 +182,6 @@
             this.Name = "frmCompletarInscripcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Completar Inscripción";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCompletarInscripcion_FormClosing);
             this.Load += new System.EventHandler(this.frmCompletarInscripcion_Load);
             this.grpNoSocios.ResumeLayout(false);
             this.ResumeLayout(false);
