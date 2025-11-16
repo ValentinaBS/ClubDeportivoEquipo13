@@ -150,7 +150,7 @@ namespace ClubDeportivoEquipo13.Validaciones
 
         public static string ValidarDireccion(string input)
         {
-            string direccion = input.Trim();
+            string direccion = CapitalizarYBorrarEspacios(input);
 
             if (direccion.Length < 5 || direccion.Length > 100)
                 return string.Empty;

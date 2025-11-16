@@ -157,6 +157,7 @@ namespace ClubDeportivoEquipo13.Forms
                     else if (idGenerado == 0)
                     {
                         MessageBox.Show("Error al crear cuota: La Persona no está registrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
@@ -199,6 +200,7 @@ namespace ClubDeportivoEquipo13.Forms
                     else if (idGenerado == 0)
                     {
                         MessageBox.Show("Error al crear cuota: La Persona no está registrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
@@ -207,7 +209,6 @@ namespace ClubDeportivoEquipo13.Forms
                     }
 
                 }
-
                 // Mostrar comprobante según corresponda
                 PersonasDatos pd = new PersonasDatos();
                 DataTable personaDatos = pd.BuscarPersonaPorDni(dni);
@@ -257,7 +258,7 @@ namespace ClubDeportivoEquipo13.Forms
                         montoCuotas
                     );
                     comprobante.ShowDialog();
-                
+
                 }
                 else //NO SOCIO -> COMPROBANTE
                 {
@@ -274,6 +275,7 @@ namespace ClubDeportivoEquipo13.Forms
                     comprobante.ShowDialog();
                 }
                 this.Close();
+
             }
             catch
             {

@@ -189,6 +189,8 @@ namespace ClubDeportivoEquipo13.Datos
 
         public DataTable ListarSociosVencidosEseDia(DateTime fechaConsulta)
         {
+            // Le resto un día para que la cuota esté efectivamente vencida
+            fechaConsulta = fechaConsulta.AddDays(-1);
             DataTable dt = new DataTable();
             try
             {
@@ -196,18 +198,18 @@ namespace ClubDeportivoEquipo13.Datos
                 {
                     cn.Open();
 
-                    // Filtra donde la fecha de vencimiento sea EXACTAMENTE EL MISMO DÍA que la fecha de consulta
+                    // Filtra donde la fecha de vencimiento sea 1 día DESPUÉS que la fecha de consulta
                     string query = @"
-            SELECT 
-                CONCAT(p.nombre, ' ', p.apellido) AS Socio, 
-                s.idSocio AS IdSocio, 
-                s.fechaVencimiento AS FechaVencimiento
-            FROM 
-                socio s
-            JOIN 
-                persona p ON s.idPersona = p.idPersona
-            WHERE 
-                DATE(s.fechaVencimiento) = DATE(@fechaConsulta)";
+                        SELECT 
+                        CONCAT(p.nombre, ' ', p.apellido) AS Socio, 
+                        s.idSocio AS IdSocio, 
+                        s.fechaVencimiento AS FechaVencimiento
+                        FROM 
+                            socio s
+                        JOIN 
+                            persona p ON s.idPersona = p.idPersona
+                        WHERE 
+                            DATE(s.fechaVencimiento) = DATE(@fechaConsulta)";
 
                     MySqlCommand cmd = new MySqlCommand(query, cn);
 
