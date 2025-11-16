@@ -76,6 +76,7 @@ namespace ClubDeportivoEquipo13.Forms
             if (txtDireccion.Text != "")
             {
                 direccionValidada = AyudanteValidador.ValidarDireccion(txtDireccion.Text);
+                direccionValidada = AyudanteValidador.CapitalizarYBorrarEspacios(txtDireccion.Text);
                 if (direccionValidada == "")
                 {
                     MessageBox.Show("La Dirección debe tener al menos 5 caracteres válidos, máximo 100", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
