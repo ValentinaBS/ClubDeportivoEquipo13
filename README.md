@@ -75,13 +75,10 @@ The application includes reports focused on membership fees, including the ident
 
 ## 📸 Screenshots
 
-![Login](<img width="455" height="322" alt="image" src="https://github.com/user-attachments/assets/dc40ab8d-5d9c-4969-b160-015909ba6bf5" />)
-![Dashboard](<img width="362" height="391" alt="image" src="https://github.com/user-attachments/assets/bb7297c0-5c2a-4175-a458-c13514744036" />
-) 
-![Members](<img width="438" height="435" alt="image" src="https://github.com/user-attachments/assets/68325ec4-15b7-422e-b747-5de849595857" />
-) 
-![Reports](<img width="447" height="492" alt="image" src="https://github.com/user-attachments/assets/134673db-2bef-48ee-9124-bdef714e3ea1" />
-)
+<img width="455" height="322" alt="image" src="https://github.com/user-attachments/assets/dc40ab8d-5d9c-4969-b160-015909ba6bf5" />
+<img width="362" height="391" alt="image" src="https://github.com/user-attachments/assets/bb7297c0-5c2a-4175-a458-c13514744036" />
+![Members]<img width="438" height="435" alt="image" src="https://github.com/user-attachments/assets/68325ec4-15b7-422e-b747-5de849595857" />
+![Reports]<img width="447" height="492" alt="image" src="https://github.com/user-attachments/assets/134673db-2bef-48ee-9124-bdef714e3ea1" />
 
 
 ## 🚀 Getting Started
